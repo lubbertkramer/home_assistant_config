@@ -1,0 +1,48 @@
+#**********************************************************
+#* Network
+#**********************************************************
+#https://www.home-assistant.io/components/sensor.cert_expiry/#name
+  - platform: cert_expiry
+    host: !secret cert_expiry_1
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_2
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_3
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_4
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_20
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_20
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_21
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_22
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_23
+
+  - platform: cert_expiry
+    host: !secret cert_expiry_24
+
+
+#https://www.home-assistant.io/components/sensor.speedtest/
+#  - platform: speedtest
+#    minute: 30
+#    hour:
+#      - 0
+#      - 6
+#      - 12
+#      - 18
+#    server_id: 1747
+#    monitored_conditions:
+#      - ping
+#      - download
+#      - upload

@@ -1,0 +1,6 @@
+# LOCK
+# https://www.home-assistant.io/components/lock.nuki/
+lock:
+  - platform: nuki
+    host: !secret nuki_host
+    token: !secret nuki_token

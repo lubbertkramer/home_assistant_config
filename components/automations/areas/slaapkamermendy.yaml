@@ -1,0 +1,67 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+
+#**********************************************************
+#* Motion
+#**********************************************************
+
+#**********************************************************
+#* State
+#**********************************************************
+
+#**********************************************************
+#* Switch
+#**********************************************************
+- alias: dimmer_mendy_on
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_mendy
+      event: 1002
+  action:
+    service: light.turn_on
+    data:
+      rgb_color: [253, 255, 69]
+    entity_id: light.slaapkamermendy
+
+- alias: dimmer_mendy_brightness_up
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_mendy
+      event: 2002
+  action:
+    service: light.turn_on
+    data_template:
+      rgb_color: ['{{ (range(0, 255)|random) }}','{{ (range(0, 255)|random) }}','{{ (range(0, 255)|random) }}']
+    entity_id: light.slaapkamermendy
+
+- alias: dimmer_mendy_brightness_down
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_mendy
+      event: 3002
+  action:
+    service: light.turn_on
+    data:
+      effect: colorloop
+    entity_id: light.slaapkamermendy
+
+- alias: dimmer_mendy_off
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: dimmer_mendy
+      event: 4002
+  action:
+    service: light.turn_off
+    entity_id: light.slaapkamermendy
+#**********************************************************
+#* Timers
+#**********************************************************

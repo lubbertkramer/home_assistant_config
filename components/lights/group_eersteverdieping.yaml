@@ -1,0 +1,47 @@
+#**********************************************************
+#* EERSTE VERDIEPING
+#**********************************************************
+  - platform: group
+    name: eersteverdieping
+    entities:
+      - light.lamp_overloop01
+      - light.lamp_overloop02
+      - light.lamp_badkamer
+      - light.lamp_babykamer01
+      - light.lamp_mendy01
+      - light.lamp_mendy02
+      - light.lamp_inloopkast01
+      - light.lamp_inloopkast02
+      - light.lamp_slaapkameredv
+      - light.lamp_slaapkamerlkr
+      - light.strip_kdvhoofdbord
+
+  - platform: group
+    name: overloop
+    entities:
+      - light.lamp_overloop01
+      - light.lamp_overloop02
+
+  - platform: group
+    name: badkamer
+    entities:
+      - light.lamp_badkamer
+
+  - platform: group
+    name: slaapkamermendy
+    entities:
+      - light.lamp_mendy01
+      - light.lamp_mendy02
+
+  - platform: group
+    name: slaapkamerkdv
+    entities:
+      - light.lamp_slaapkameredv
+      - light.lamp_slaapkamerlkr
+      - light.strip_kdvhoofdbord
+
+  - platform: group
+    name: inloopkast
+    entities:
+      - light.lamp_inloopkast01
+      - light.lamp_inloopkast02

@@ -1,0 +1,33 @@
+#**********************************************************
+#* Work LKR
+#**********************************************************
+#https://www.home-assistant.io/components/zone/
+  - name: !secret lkr-work-name
+    latitude: !secret lkr-work-latitude
+    longitude: !secret lkr-work-longitude
+    radius: 70
+    icon: mdi:worker
+
+  - name: !secret lkr-work1-name
+    latitude: !secret lkr-work1-latitude
+    longitude: !secret lkr-work1-longitude
+    radius: 70
+    icon: mdi:worker
+
+  - name: !secret lkr-work2-name
+    latitude: !secret lkr-work2-latitude
+    longitude: !secret lkr-work2-longitude
+    radius: 70
+    icon: mdi:worker
+
+  - name: !secret lkr-work3-name
+    latitude: !secret lkr-work3-latitude
+    longitude: !secret lkr-work3-longitude
+    radius: 70
+    icon: mdi:worker
+
+  - name: !secret lkr-work4-name
+    latitude: !secret lkr-work4-latitude
+    longitude: !secret lkr-work4-longitude
+    radius: 70
+    icon: mdi:worker

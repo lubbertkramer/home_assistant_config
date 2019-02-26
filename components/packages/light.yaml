@@ -1,0 +1,3 @@
+# LIGHT
+#https://www.home-assistant.io/components/light/
+light: !include_dir_merge_list ../lights

@@ -1,0 +1,6 @@
+# VACUUM
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret xiaomi_robodown_ip
+    token: !secret xiaomi_robodown_token

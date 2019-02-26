@@ -1,0 +1,10 @@
+#**********************************************************
+#* KODI
+#**********************************************************
+#https://www.home-assistant.io/components/media_player.kodi/
+  - platform: kodi
+    host: !secret kodi_hostbeneden
+    port: !secret kodi_portbeneden
+    tcp_port: !secret kodi_tcpportbeneden
+    #username: !secret kodi_usernamebeneden
+    name: kodi_beneden

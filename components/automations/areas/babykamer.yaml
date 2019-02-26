@@ -1,0 +1,37 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+- alias: contact_babykamer_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.contact_babykamer
+    from: 'off'
+    to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.lamp_babykamer01
+
+- alias: contact_babykamer_off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.contact_babykamer
+    from: 'on'
+    to: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.lamp_babykamer01
+#**********************************************************
+#* Motion
+#**********************************************************
+
+#**********************************************************
+#* State
+#**********************************************************
+
+#**********************************************************
+#* Switch
+#**********************************************************
+
+#**********************************************************
+#* Timers
+#**********************************************************

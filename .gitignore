@@ -1,5 +1,11 @@
 #Ignore everything
-*
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+._*
+__pycache__
 
 # Directory (contents) ignores
 .cloud

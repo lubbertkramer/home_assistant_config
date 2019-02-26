@@ -1,0 +1,15 @@
+#VARIABLE
+#https://github.com/rogro82/hass-variables
+variable:
+  last_motion:
+    value: 'Unknown'
+    restore: true
+    attributes:
+      icon: mdi:map-marker
+      name: "Last Motion"
+
+  obs_air:
+    value: 'Unknown'
+
+  obs_sky:
+    value: 'Unknown'

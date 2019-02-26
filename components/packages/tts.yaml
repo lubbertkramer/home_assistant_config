@@ -1,0 +1,4 @@
+# TTS
+# https://www.home-assistant.io/components/tts/
+tts:
+  - platform: google

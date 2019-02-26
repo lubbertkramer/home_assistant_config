@@ -1,0 +1,7 @@
+#**********************************************************
+#* Marantz Reciever
+#**********************************************************
+#https://www.home-assistant.io/components/media_player.denonavr/
+  - platform: denonavr
+    host: !secret marantz_host
+    name: Marantz_Beneden

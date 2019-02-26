@@ -1,0 +1,6 @@
+#**********************************************************
+#* Generic
+#**********************************************************
+#https://www.home-assistant.io/components/binary_sensor.workday/
+  - platform: workday
+    country: NL

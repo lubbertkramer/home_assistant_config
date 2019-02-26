@@ -1,0 +1,153 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+- alias: contact_voordeur_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.contact_voordeur
+    from: 'off'
+    to: 'on'
+  condition:
+      condition: or  # 'when dark' condition: either after sunset or before sunrise
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: '-01:00:00'
+        - condition: sun
+          before: sunrise
+          before_offset: '+01:00:00'
+  action:
+    - service: timer.start
+      entity_id: timer.hal_lampen
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.hal", "off") %}
+            scene.hal_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.hal", "off") %}
+            scene.hal_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.hal", "off") %}
+            scene.hal_avond
+          {% elif is_state("light.hal", "on") %}
+            script.nothing
+          {% endif %}
+#**********************************************************
+#* Motion
+#**********************************************************
+- alias: motion_hal_lights_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_voordeur,binary_sensor.motion_hal,binary_sensor.motion_haltrap
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: timer.hal_lampen
+      state: 'active'
+  action:
+  - service: timer.cancel
+    entity_id: timer.hal_lampen
+  - service: timer.start
+    entity_id: timer.hal_lampen
+
+- alias: motion_hal_lights_off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_voordeur,binary_sensor.motion_hal,binary_sensor.motion_haltrap
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.hal
+        state: 'off'
+      - condition: or
+        conditions:
+          - condition: sun
+            after: sunset
+            after_offset: "-01:00:00"
+          - condition: sun
+            before: sunrise
+            before_offset: "+01:00:00"
+  action:
+    - service: timer.start
+      entity_id:  timer.hal_lampen
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.hal", "off") %}
+            scene.hal_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.hal", "off") %}
+            scene.hal_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.hal", "off") %}
+            scene.hal_avond
+          {% elif is_state("light.hal", "on") %}
+            script.nothing
+          {% endif %}
+#**********************************************************
+#* State
+#**********************************************************
+- alias: state_hal_lamp
+  trigger:
+    platform: state
+    entity_id: light.hal
+    from: 'on'
+    to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.hal_lampen
+#**********************************************************
+#* Switch
+#**********************************************************
+- alias: switch_hal_rechts
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_hal
+      event: 2002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.hal", "off") %}
+            scene.hal_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.hal", "off") %}
+            scene.hal_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.hal", "off") %}
+            scene.hal_avond
+          {% elif is_state("light.hal", "on") %}
+            scene.hal_uit
+          {% endif %}
+
+- alias: switch_hal_links
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_hal
+      event: 1002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.overloop", "off") %}
+            scene.overloop_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.overloop", "off") %}
+            scene.overloop_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.overloop", "off") %}
+            scene.overloop_avond
+          {% elif is_state("light.overloop", "on") %}
+            scene.overloop_uit
+          {% endif %}
+#**********************************************************
+#* Timers
+#**********************************************************
+- alias: timer_hal_lampen_finished
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.hal_lampen
+  action:
+    service: light.turn_off
+    entity_id: light.hal

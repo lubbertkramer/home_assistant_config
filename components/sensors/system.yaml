@@ -1,0 +1,85 @@
+#**********************************************************
+#* SYSTEM
+#**********************************************************
+#https://www.home-assistant.io/components/sensor.uptime/
+  - platform: uptime
+    unit_of_measurement: minutes
+
+  - platform: uptime
+    unit_of_measurement: hours
+
+  - platform: uptime
+    unit_of_measurement: days
+
+#https://www.home-assistant.io/components/sensor.systemmonitor/
+  - platform: systemmonitor
+    resources:
+#      - type: disk_use_percent
+#      - type: disk_use_percent
+#        arg: /home
+#      - type: disk_free
+#      - type: disk_use
+      - type: memory_free
+      - type: memory_use
+      - type: memory_use_percent
+      - type: swap_use_percent
+      - type: swap_use
+      - type: swap_free
+      - type: load_1m
+      - type: load_5m
+      - type: load_15m
+      - type: network_in
+        arg: eno1
+      - type: network_out
+        arg: eno1
+        #arg: ens36
+      - type: packets_in
+        arg: eno1
+      - type: packets_out
+        arg: eno1
+      - type: ipv4_address
+        arg: eno1
+      - type: processor_use
+      - type: last_boot
+
+#https://www.home-assistant.io/components/sensor.version/
+  - platform: version
+    source: local
+
+  - platform: version
+    source: docker
+
+#https://www.home-assistant.io/components/sensor.filesize/
+#  - platform: filesize
+#    file_paths:
+#      - /config/home-assistant.log
+#      - /config/home-assistant_v2.db
+
+# Netdata NUC-1701
+
+  - platform: netdata
+    name: NUC-1701
+    host: 192.168.1.20
+    port: 19999
+    resources:
+      cpu:
+        data_group: system.cpu
+        element: system
+      load1:
+        data_group: system.load
+        element: load1
+      load5:
+        data_group: system.load
+        element: load5
+      load15:
+        data_group: system.load
+        element: load15
+      ramfree:
+        data_group: system.ram
+        element: free
+      ramused:
+        data_group: system.ram
+        element: used
+      ramcached:
+        data_group: system.ram
+        element: cached

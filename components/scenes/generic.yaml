@@ -1,0 +1,6 @@
+#**********************************************************
+#* LIFX Cloud
+#**********************************************************
+#https://www.home-assistant.io/components/scene.lifx_cloud/
+  - platform: lifx_cloud
+    token: !secret lifx_token

@@ -1,0 +1,30 @@
+#**********************************************************
+#* Time
+#**********************************************************
+- alias: automation_update_template_sensors
+  trigger:
+      platform: time_pattern
+      minutes: '5'
+  action:
+  - service: homeassistant.update_entity
+    entity_id:
+      - sensor.duedate
+      - sensor.automation_count
+      - sensor.binary_sensor_count
+      - sensor.calendar_count
+      - sensor.climate_count
+      - sensor.tracker_count
+      - sensor.group_count
+      - sensor.inputboolean_count
+      - sensor.inputtext_count
+      - sensor.lights_count
+      - sensor.lock_count
+      - sensor.media_count
+      - sensor.proximity_count
+      - sensor.scene_count
+      - sensor.script_count
+      - sensor.sensor_count
+      - sensor.switch_count
+      - sensor.timer_count
+      - sensor.variable_count
+      - sensor.zone_count

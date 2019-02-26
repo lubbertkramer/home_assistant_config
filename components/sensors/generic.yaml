@@ -1,0 +1,19 @@
+#**********************************************************
+#* Date / Time and phaes of the Moon / Sun
+#**********************************************************
+#https://www.home-assistant.io/components/sensor.worldclock/
+  - platform: worldclock
+    time_zone: Europe/Amsterdam
+
+#https://www.home-assistant.io/components/sensor.time_date/
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+
+#https://www.home-assistant.io/components/sensor.moon/
+  - platform: moon
+
+#https://www.home-assistant.io/components/sensor.season/
+  - platform: season
+    type: astronomical

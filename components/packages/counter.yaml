@@ -1,0 +1,6 @@
+# COUNTER
+# https://www.home-assistant.io/components/counter/
+counter:
+  test:
+    initial: 1
+    step: 1

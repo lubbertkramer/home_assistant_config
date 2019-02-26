@@ -1,0 +1,45 @@
+#**********************************************************
+#* PostNL
+#**********************************************************
+#https://www.home-assistant.io/components/sensor.postnl/
+  - platform: postnl
+    username: !secret postnl_username
+    password: !secret postnl_password
+
+#  - platform: sonarr
+#    host: !secret sonarr_ip
+#    port: !secret sonarr_port
+#    api_key: !secret sonarr_api
+#    monitored_conditions:
+#      - upcoming
+#      - wanted
+#      - series
+#      - queue
+#      - commands
+#    days: 2
+
+  - platform: radarr
+    host: !secret radarr_ip
+    port: !secret radarr_port
+    api_key: !secret radarr_api
+    monitored_conditions:
+      - upcoming
+      - movies
+      - status
+      - commands
+    days: 2
+
+  - platform: nzbget
+    host: !secret nzbget_ip
+    port: !secret nzbget_port
+    username: !secret nzbget_username
+    password: !secret nzbget_password
+    monitored_variables:
+      - article_cache
+      - average_download_rate
+      - download_paused
+      - download_rate
+      - download_size
+      - post_paused
+      - remaining_size
+      - uptime

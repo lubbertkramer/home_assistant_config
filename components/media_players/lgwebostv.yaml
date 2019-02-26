@@ -1,0 +1,8 @@
+#**********************************************************
+#* LG webostv
+#**********************************************************
+#https://www.home-assistant.io/components/media_player.webostv/
+  - platform: webostv
+    host: !secret lgwebos_host
+    name: LGTV
+    filename: webostv.conf

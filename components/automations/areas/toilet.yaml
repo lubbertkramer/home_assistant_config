@@ -1,0 +1,115 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+- alias: contact_toilet_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.contact_toilet
+    from: 'off'
+    to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.toilet_lampen
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.toilet", "off") %}
+            scene.toilet_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.toilet", "off") %}
+            scene.toilet_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.toilet", "off") %}
+            scene.toilet_avond
+          {% elif is_state("light.toilet", "on") %}
+            scene.toilet_uit
+          {% endif %}
+#**********************************************************
+#* Motion
+#**********************************************************
+- alias: motion_toilet_timer_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_toilet
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: timer.toilet_lampen
+      state: 'active'
+  action:
+  - service: timer.cancel
+    entity_id: timer.toilet_lampen
+  - service: timer.start
+    entity_id: timer.toilet_lampen
+
+- alias: motion_toilet_lights_off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_toilet
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.toilet
+      state: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.toilet_lampen
+  - service: scene.turn_on
+    data_template:
+      entity_id: >-
+        {% if now().hour >= 0 and now().hour < 6 and is_state("light.toilet", "off") %}
+          scene.toilet_nacht
+        {% elif now().hour >= 6 and now().hour < 18 and is_state("light.toilet", "off") %}
+          scene.toilet_dag
+        {% elif now().hour >= 18 and now().hour < 24 and is_state("light.toilet", "off") %}
+          scene.toilet_avond
+        {% elif is_state("light.toilet", "on") %}
+            script.nothing
+        {% endif %}
+#**********************************************************
+#* State
+#**********************************************************
+- alias: state_toilet_lamp
+  trigger:
+    platform: state
+    entity_id: light.toilet
+    from: 'on'
+    to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.toilet_lampen
+#**********************************************************
+#* Switch
+#**********************************************************
+- alias: switch_toilet
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_toilet
+      event: 1002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.toilet", "off") %}
+            scene.toilet_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.toilet", "off") %}
+            scene.toilet_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.toilet", "off") %}
+            scene.toilet_avond
+          {% elif is_state("light.toilet", "on") %}
+            scene.toilet_uit
+          {% endif %}
+#**********************************************************
+#* Timers
+#**********************************************************
+- alias: timer_toilet_lampen_finished
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.toilet_lampen
+  action:
+    service: light.turn_off
+    entity_id: light.toilet

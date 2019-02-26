@@ -1,0 +1,124 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+
+#**********************************************************
+#* Motion
+#**********************************************************
+- alias: motion_badkamer_timer_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_badkamer, binary_sensor.motion_badkamerbad, binary_sensor.motion_badkamertoilet
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: timer.badkamer_lampen
+      state: 'active'
+  action:
+  - service: timer.cancel
+    entity_id: timer.badkamer_lampen
+  - service: timer.start
+    entity_id: timer.badkamer_lampen
+
+- alias: motion_badkamer
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_badkamer, binary_sensor.motion_badkamerbad, binary_sensor.motion_badkamertoilet
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.badkamer
+        state: 'off'
+      - condition: or
+        conditions:
+          - condition: sun
+            after: sunset
+            after_offset: "-01:00:00"
+          - condition: sun
+            before: sunrise
+            before_offset: "+01:00:00"
+  action:
+    - service: timer.start
+      entity_id: timer.badkamer_lampen
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.badkamer", "off") %}
+            scene.badkamer_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.badkamer", "off") %}
+            scene.badkamer_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.badkamer", "off") %}
+            scene.badkamer_avond
+          {% elif is_state("light.badkamer", "on") %}
+            script.nothing
+          {% endif %}
+#**********************************************************
+#* State
+#**********************************************************
+- alias: state_badkamer_lamp
+  trigger:
+    platform: state
+    entity_id: light.badkamer
+    from: 'on'
+    to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.badkamer_lampen
+#**********************************************************
+#* Switch
+#**********************************************************
+- alias: switch_badkamer_rechts
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_badkamer
+      event: 2002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.overloop", "off") %}
+            scene.overloop_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.overloop", "off") %}
+            scene.overloop_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.overloop", "off") %}
+            scene.overloop_avond
+          {% elif is_state("light.overloop", "on") %}
+            scene.overloop_uit
+          {% endif %}
+
+- alias: switch_badkamer_links
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_badkamer
+      event: 1002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.badkamer", "off") %}
+            scene.badkamer_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.badkamer", "off") %}
+            scene.badkamer_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.badkamer", "off") %}
+            scene.badkamer_avond
+          {% elif is_state("light.badkamer", "on") %}
+            scene.badkamer_uit
+          {% endif %}
+#**********************************************************
+#* Timers
+#**********************************************************
+- alias: timer_badkamer_lampen_finished
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.badkamer_lampen
+  action:
+    service: light.turn_off
+    entity_id: light.badkamer

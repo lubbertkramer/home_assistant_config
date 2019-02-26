@@ -1,0 +1,9 @@
+# TELEGRAM
+# https://www.home-assistant.io/components/telegram_bot.broadcast/
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_idNotificaties
+      - !secret telegram_chat_idLog
+      - !secret telegram_chat_idLKR

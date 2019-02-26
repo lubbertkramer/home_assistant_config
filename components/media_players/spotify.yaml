@@ -1,0 +1,7 @@
+#**********************************************************
+#* SPOTIFY
+#**********************************************************
+#https://www.home-assistant.io/components/media_player.spotify/
+  - platform: spotify
+    client_id: !secret spotify_clientid
+    client_secret: !secret spotify_secret

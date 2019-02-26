@@ -1,0 +1,7 @@
+# SCRIPT
+#https://www.home-assistant.io/components/script/
+#script: !include scripts.yaml
+script:
+  nothing:
+    sequence:
+      delay: 00:00:00

@@ -1,0 +1,10 @@
+# GROUP
+#https://www.home-assistant.io/components/group/
+#group: !include groups.yaml
+group:
+
+  familie_kdv:
+    name: Familie Kramer en de Vries
+    entities:
+      - device_tracker.google_maps_112346107373671777975
+      - device_tracker.google_maps_116350897273033785476

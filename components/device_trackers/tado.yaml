@@ -1,0 +1,8 @@
+#**********************************************************
+#* Tado
+#**********************************************************
+#https://www.home-assistant.io/components/device_tracker.tado/
+  - platform: tado
+    username: !secret tado_username
+    password: !secret tado_password
+    home_id: !secret tado_homeid

@@ -1,0 +1,38 @@
+#**********************************************************
+#* FILE    bijkeuken.yaml
+#* AUTHOR  Lubbert Kramer
+#**********************************************************
+
+#**********************************************************
+#* BIJKEUKEN - OVERDAG
+#**********************************************************
+  - name: bijkeuken_dag
+    entities:
+      light.bijkeuken:
+        state: on
+        brightness: 200
+
+#**********************************************************
+#* BIJKEUKEN - AVOND
+#**********************************************************
+  - name: bijkeuken_avond
+    entities:
+      light.bijkeuken:
+        state: on
+        brightness: 150
+
+#**********************************************************
+#* BIJKEUKEN - NACHT
+#**********************************************************
+  - name: bijkeuken_nacht
+    entities:
+      light.bijkeuken:
+        state: on
+        brightness: 75
+
+#**********************************************************
+#* BIJKEUKEN - UIT
+#**********************************************************
+  - name: bijkeuken_uit
+    entities:
+      light.bijkeuken: off

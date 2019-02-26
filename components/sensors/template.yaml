@@ -1,0 +1,356 @@
+#**********************************************************
+#* Template
+#**********************************************************
+#https://www.home-assistant.io/components/sensor.template/
+
+#Afvalwijzer
+  - platform: template
+    sensors:
+
+      afvalvandaag:
+        friendly_name: "Afval vandaag"
+        value_template: >-
+          {% if is_state('sensor.afval_datum', 'vandaag') %}
+            {{states.sensor.afval_soort.state}}
+          {% else %}
+            Geen
+          {% endif %}
+
+      afvalmorgen:
+        friendly_name: "Afval morgen"
+        value_template: >-
+          {% if is_state('sensor.afval_datum', 'morgen') %}
+            {{states.sensor.afval_soort.state}}
+          {% else %}
+            Geen
+          {% endif %}
+
+#DATE
+      template_date_nl:
+        friendly_name: Datum
+        value_template: >-
+            {% set date = states.sensor.date.state.split('-') %}
+            {{ date[2] }}-{{ date[1] }}-{{ date[0] }}
+        icon_template: mdi:calendar
+
+      duedate:
+        friendly_name: 'geboorte aragorn'
+        #unit_of_measurement: 'Days'
+        value_template: '{{ (( as_timestamp(strptime("2019-07-16 00:00:00" , "%Y-%m-%dT%H:%M:%S")) - as_timestamp(now()) )/ (3600*24)) | round(0) }}'
+        icon_template: mdi:human-pregnant
+#Ring
+#      ringvideourl:
+#        friendly_name: "Ring Voordeur Video URL"
+#        value_template: >-
+#          {{state_attr('camera.front_door', 'video_url').split('?')[0]}}
+
+#github
+
+      github_issues:
+        value_template: "{{ state_attr('sensor.githubgeneric', 'open_issues') }}"
+        entity_id: sensor.githubgeneric
+
+      github_subscribers_count:
+        value_template: "{{ state_attr('sensor.githubgeneric', 'subscribers_count') }}"
+        entity_id: sensor.githubgeneric
+
+      github_stargazers_count:
+        value_template: "{{ state_attr('sensor.githubgeneric', 'stargazers_count') }}"
+        entity_id: sensor.githubgeneric
+
+      github_watchers_count:
+        value_template: "{{ state_attr('sensor.githubgeneric', 'watchers_count') }}"
+        entity_id: sensor.githubgeneric
+
+      github_forks:
+        value_template: "{{ state_attr('sensor.githubgeneric', 'forks') }}"
+        entity_id: sensor.githubgeneric
+
+      github_milestone_title:
+        value_template: "{{ state_attr('sensor.githubmilestones', 'title') }}"
+        entity_id: sensor.githubmilestones
+
+      github_milestone_description:
+        value_template: "{{ state_attr('sensor.githubmilestones', 'description') }}"
+        entity_id: sensor.githubmilestones
+
+      github_milestone_open_issues:
+        value_template: "{{ state_attr('sensor.githubmilestones', 'open_issues') }}"
+        entity_id: sensor.githubmilestones
+
+      github_milestone_closed_issues:
+        value_template: "{{ state_attr('sensor.githubmilestones', 'closed_issues') }}"
+        entity_id: sensor.githubmilestones
+
+#Home Assistant
+#Thanks to @ccostan for the code here.  Some Intresting HA stats
+      automation_count:
+        friendly_name: 'Number of Automations'
+        value_template: >
+          {%- set domains = ['automation'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      binary_sensor_count:
+        friendly_name: 'Number of Binary Sensors'
+        value_template: >
+          {%- set domains = ['binary_sensor'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      calendar_count:
+        friendly_name: 'Number of Calendars'
+        value_template: >
+          {%- set domains = ['calendar'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      climate_count:
+        friendly_name: 'Number of Thermostaten'
+        value_template: >
+          {%- set domains = ['climate'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      tracker_count:
+        friendly_name: 'Number of Device Trackers'
+        value_template: >
+          {%- set domains = ['device_tracker'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      group_count:
+        friendly_name: 'Number of Groups'
+        value_template: >
+          {%- set domains = ['group'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      inputboolean_count:
+        friendly_name: 'Number of Input Booleans'
+        value_template: >
+          {%- set domains = ['input_boolean'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      inputtext_count:
+        friendly_name: 'Number of Input Text'
+        value_template: >
+          {%- set domains = ['input_text'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      lights_count:
+        friendly_name: 'Number of Lights'
+        value_template: >
+          {%- set domains = ['light'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      lock_count:
+        friendly_name: 'Number of Locks'
+        value_template: >
+          {%- set domains = ['lock'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      media_count:
+        friendly_name: 'Number of Media Players'
+        value_template: >
+          {%- set domains = ['media_player'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      proximity_count:
+        friendly_name: 'Number of Proximity sensors'
+        value_template: >
+          {%- set domains = ['proximity'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      scene_count:
+        friendly_name: 'Number of Scenes'
+        value_template: >
+          {%- set domains = ['scene'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      script_count:
+        friendly_name: 'Number of Scripts'
+        value_template: >
+          {%- set domains = ['script'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      sensor_count:
+        friendly_name: 'Number of Sensors'
+        value_template: >
+          {%- set domains = ['sensor'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      switch_count:
+        friendly_name: 'Number of Switches'
+        value_template: >
+          {%- set domains = ['switch'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      timer_count:
+        friendly_name: 'Number of Timers'
+        value_template: >
+          {%- set domains = ['timer'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      variable_count:
+        friendly_name: 'Number of Variables'
+        value_template: >
+          {%- set domains = ['variable'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+      zone_count:
+        friendly_name: 'Number of Zones'
+        value_template: >
+          {%- set domains = ['zone'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+
+
+
+# Device Trackers / Users
+      battery_lkr:
+        friendly_name: "Telefoonbatterij Lubbert"
+        value_template: "{{ states.device_tracker.google_maps_116350897273033785476.attributes.battery_level|int }}"
+        icon_template: >-
+          {% if is_state('sensor.battery_charging_lkr', 'True') %}
+            mdi:battery-charging
+          {% endif %}
+        unit_of_measurement: "%"
+        device_class: battery
+
+      traveltime_lkr:
+        friendly_name: "Tijd naar huis voor Lubbert"
+        value_template: "{{ states.sensor.travel_waze_lkr|int }}"
+        icon_template: >-
+          {% if is_state('sensor.travel_waze_lkr', '> 0') %}
+            mdi:timer-sand
+          {% else %}
+            mdi:timer-sand-empty
+          {% endif %}
+        device_class: timestamp
+
+      battery_edv:
+        friendly_name: "Telefoonbatterij Ellen"
+        value_template: "{{ states.device_tracker.google_maps_112346107373671777975.attributes.battery_level|int }}"
+        icon_template: >-
+          {% if is_state('sensor.battery_charging_edv', 'True') %}
+            mdi:battery-charging
+          {% endif %}
+        unit_of_measurement: "%"
+        device_class: battery
+
+      battery_charging_edv:
+        #friendly_name: "In te vullen"
+        value_template: "{{ state_attr('device_tracker.google_maps_112346107373671777975', 'battery_charging') }}"
+
+      battery_charging_lkr:
+        #friendly_name: "In te vullen"
+        value_template: "{{ state_attr('device_tracker.google_maps_116350897273033785476', 'battery_charging') }}"

@@ -1,0 +1,14 @@
+#**********************************************************
+#* TELEGRAM
+#**********************************************************
+  - name: telegram_notificaties
+    platform: telegram
+    chat_id: !secret telegram_chat_idNotificaties
+
+  - name: telegram_log
+    platform: telegram
+    chat_id: !secret telegram_chat_idLog
+
+  - name: telegram_lkr
+    platform: telegram
+    chat_id: !secret telegram_chat_idLKR

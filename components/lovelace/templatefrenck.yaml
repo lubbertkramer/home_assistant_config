@@ -1,0 +1,133 @@
+#https://www.home-assistant.io/lovelace/
+
+#**********************************************************
+#* Dashboard
+#motion_badkamerbad
+#contact_badkamer
+#motion_badkamer
+#water_wasmachine
+#switch_toilet
+
+
+#**********************************************************
+id: templatefrenck
+title: templatefrenck
+icon: mdi:sofa
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:compact-custom-header
+      - type: entities
+        title: Verlichting
+        entities:
+          - type: section
+            label: Woonkamer
+          - entity: light.keukentafel
+            toggle: true
+          - type: section
+            label: Bureau
+          - entity: light.bureau
+            toggle: true
+          #- type: custom:slider-entity-row
+
+      - type: entities
+        title: Keuken
+        entities:
+          #- type: custom:slider-entity-row
+          - entity: light.keuken
+            toggle: true
+          - switch.plug_ikea01
+
+      - type: history-graph
+        name: Tado
+        icon: mdi:server
+        hours_to_show: 3
+        entities:
+          - sensor.beneden_temperature
+
+
+
+      - type: history-graph
+        name: Haard
+        icon: mdi:server
+        hours_to_show: 3
+        entities:
+          - sensor.sensortemp_haard
+
+      - type: history-graph
+        name: Bureau
+        icon: mdi:server
+        hours_to_show: 3
+        entities:
+          - sensor.sensortemp_bureau
+
+  - type: media-control
+    entity: media_player.spotify
+
+  - type: custom:mini-graph-card
+    name: test ertussen
+    icon: mdi:server
+    entities:
+      - entity: sensor.beneden_temperature
+        name: Tado
+      - sensor.sensortemp_haard
+      - sensor.sensortemp_bureau
+      - sensor.sensortemp_serverkast
+  - type: media-control
+    entity: media_player.lgtv
+
+  - type: vertical-stack
+    cards:
+
+      - type: media-control
+        entity: media_player.woonkamer
+
+  - type: media-control
+    entity: media_player.marantz_beneden
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-graph-card
+        name: beneden
+        icon: mdi:server
+        entities:
+          - entity: sensor.beneden_temperature
+            name: Tado
+          - sensor.sensortemp_haard
+          - sensor.sensortemp_bureau
+          - sensor.sensortemp_serverkast
+
+      - type: custom:mini-graph-card
+        name: boven
+        icon: mdi:server
+        entities:
+          - entity: sensor.boven_temperature
+            name: Tado
+          - sensor.motion_bedlkr
+          - sensor.sensortemp_mendy
+          - sensor.sensortemp_badkamer
+
+      - type: custom:calendar-card
+        title: "My Calendar"
+        numberOfDays: 14
+        progressBar: true
+        entities:
+          - calendar.kramer_en_de_vries
+
+      - type: custom:calendar-card
+        title: "My Calendar"
+        numberOfDays: 14
+        progressBar: true
+        entities:
+          - calendar.lubbertkramer_lubbertkramer_eu
+
+
+      - type: custom:calendar-card
+        title: "My Calendar"
+        numberOfDays: 14
+        progressBar: true
+        entities:
+          - calendar.lubbertkramer_lubbertkramer_eu
+          - calendar.kramer_en_de_vries
+          - calendar.ellen_lubbertkramer_eu
+          - calendar.suunterklaos_gmail_com

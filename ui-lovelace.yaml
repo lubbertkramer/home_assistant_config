@@ -1,0 +1,47 @@
+#**********************************************************
+#* LOVELACE
+#* FILE    ui-lovcelace.yaml
+#* AUTHOR  Lubbert Kramer
+#**********************************************************
+#**********************************************************
+#https://www.home-assistant.io/lovelace/
+
+#**********************************************************
+#* RESOURCES
+#**********************************************************
+resources:
+  - url: /customcards/github/tracker-card/tracker-card.js?track=true
+    type: js
+  - url: /customcards/github/home-setter/home-setter.js?track=true
+    type: js
+  - url: /customcards/github/upcoming-media-card/upcoming-media-card.js?track=true
+    type: js
+  - url: /customcards/github/mini-graph-card/mini-graph-card-bundle.js?track=true
+    type: module
+  - url: /customcards/github/calendar-card/calendar-card.js?track=true
+    type: js
+  - url: /customcards/github/vertical-stack-in-card/vertical-stack-in-card.js?track=true
+    type: js
+  - url: /customcards/github/monster-card/monster-card.js?track=true
+    type: js
+  - url: /customcards/github/lovelace-card-modder/card-modder.js?track=true
+    type: js
+  - url: /customcards/github/lovelace-layout-card/layout-card.js?track=true
+    type: js
+  - url: /customcards/github/lovelace-card-tools/card-tools.js?track=true
+    type: js
+  - url: /customcards/github/lovelace-slider-entity-row/slider-entity-row.js?track=true
+    type: js
+  - url: /customcards/github/compact-custom-header/compact-custom-header.js?track=true
+    type: module
+  - url: /customcards/github/button-card/button-card.js?track=true
+    type: module
+
+title: Home Control Panel
+views:
+  - !include components/lovelace/home.yaml
+  - !include components/lovelace/homebackup.yaml
+  - !include components/lovelace/template4.yaml
+  - !include components/lovelace/template3.yaml
+  - !include components/lovelace/templatefrenck.yaml
+  - !include components/lovelace/homeassistant.yaml

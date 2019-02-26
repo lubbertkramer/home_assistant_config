@@ -1,0 +1,21 @@
+# TIMER
+#https://www.home-assistant.io/components/timer/
+#timer: !include_dir_merge_list components/timers
+timer:
+#GENERIC
+
+#Toilet
+  toilet_lampen:
+    duration: '00:10:00'
+
+#Hal
+  hal_lampen:
+    duration: '00:02:30'
+
+#Bijkeuken
+  bijkeuken_lampen:
+    duration: '00:02:30'
+
+#Badkamer
+  badkamer_lampen:
+    duration: '00:10:00'

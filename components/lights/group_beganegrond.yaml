@@ -1,0 +1,122 @@
+#**********************************************************
+#* BEGANE GROND
+#**********************************************************
+  - platform: group
+    name: beganegrond
+    entities:
+      - light.lamp_toilet
+      - light.lamp_hal01
+      - light.lamp_hal02
+      - light.lamp_hal03
+      - light.lamp_hal04
+      - light.lamp_tvmeubel01
+      - light.lamp_tvmeubel02
+      - light.strip_tvmeubel
+      - light.lamp_voorraam
+      - light.strip_voorraam
+      - light.lamp_bureau
+      - light.strip_bureau
+      - light.lamp_keukentafel01
+      - light.lamp_keukentafel02
+      - light.strip_keuken
+      - light.lamp_trapkast01
+      - light.lamp_trapkast02
+      - light.lamp_bijkeuken01
+      - light.lamp_bijkeuken02
+
+#**********************************************************
+#* HAL
+#**********************************************************
+  - platform: group
+    name: hal
+    entities:
+      - light.lamp_hal01
+      - light.lamp_hal02
+      - light.lamp_hal03
+      - light.lamp_hal04
+
+#**********************************************************
+#* TV Meubel
+#**********************************************************
+  - platform: group
+    name: tvmeubel
+    entities:
+      - light.lamp_tvmeubel01
+      - light.lamp_tvmeubel02
+      - light.strip_tvmeubel
+
+#**********************************************************
+#* Woonkamer
+#**********************************************************
+  - platform: group
+    name: woonkamer
+    entities:
+      - light.lamp_tvmeubel01
+      - light.lamp_tvmeubel02
+      - light.strip_tvmeubel
+      - light.lamp_voorraam
+      - light.strip_voorraam
+
+#**********************************************************
+#* Bureau
+#**********************************************************
+  - platform: group
+    name: bureau
+    entities:
+      - light.lamp_bureau
+      - light.strip_bureau
+
+#**********************************************************
+#* Achterhoek
+#**********************************************************
+  - platform: group
+    name: achterhoek
+    entities:
+      - light.lamp_bureau
+      - light.strip_bureau
+      - light.lamp_leefruimteachter
+
+#**********************************************************
+#* Keukentafel
+#**********************************************************
+  - platform: group
+    name: keukentafel
+    entities:
+      - light.lamp_keukentafel01
+      - light.lamp_keukentafel02
+
+#**********************************************************
+#* Keuken
+#**********************************************************
+  - platform: group
+    name: keuken
+    entities:
+      - light.lamp_keukentafel01
+      - light.lamp_keukentafel02
+      - light.strip_keuken
+
+#**********************************************************
+#* Trapkast
+#**********************************************************
+  - platform: group
+    name: trapkast
+    entities:
+      - light.lamp_trapkast01
+      - light.lamp_trapkast02
+
+#**********************************************************
+#* Bijkeuken
+#**********************************************************
+  - platform: group
+    name: bijkeuken
+    entities:
+      - light.lamp_bijkeuken01
+      - light.lamp_bijkeuken02
+
+#**********************************************************
+#* Toilet
+#**********************************************************
+  - platform: group
+    name: toilet
+    entities:
+      - light.lamp_toilet

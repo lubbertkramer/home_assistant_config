@@ -1,0 +1,9 @@
+#**********************************************************
+#* Work EDV
+#**********************************************************
+#https://www.home-assistant.io/components/zone/
+  - name: !secret edv-work-name
+    latitude: !secret edv-work-latitude
+    longitude: !secret edv-work-longitude
+    radius: 70
+    icon: mdi:worker

@@ -1,0 +1,4 @@
+# DOWNLOADER
+# https://www.home-assistant.io/components/downloader/
+downloader:
+  download_dir: downloads

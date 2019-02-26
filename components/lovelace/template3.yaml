@@ -1,0 +1,141 @@
+#https://www.home-assistant.io/lovelace/
+
+#**********************************************************
+#* Dashboard
+#**********************************************************
+
+id: template3
+title: Template 3
+panel: true
+icon: mdi:server
+cards:
+
+  - type: vertical-stack
+    cards:
+
+     - type: custom:compact-custom-header
+     - type: horizontal-stack
+       cards:
+
+          #Row 1
+        - type: vertical-stack
+          cards:
+
+            - type: custom:upcoming-media-card
+              entity: sensor.sonarr_upcoming_media
+              image_style: poster
+
+            - type: custom:upcoming-media-card
+              entity: sensor.sonarr_upcoming_media
+              image_style: fanart
+
+            - type: custom:mini-graph-card
+              name: beneden
+              icon: mdi:server
+              entities:
+                - entity: sensor.beneden_temperature
+                  name: Tado
+                - sensor.sensortemp_haard
+                - sensor.sensortemp_bureau
+                - sensor.sensortemp_serverkast
+
+            - type: custom:mini-graph-card
+              name: Tado
+              icon: mdi:server
+              entities:
+                - entity: sensor.beneden_temperature
+                  name: Tado
+
+            - type: history-graph
+              name: Tado
+              icon: mdi:server
+              hours_to_show: 3
+              entities:
+                - sensor.beneden_temperature
+
+
+
+            - type: history-graph
+              name: Haard
+              icon: mdi:server
+              hours_to_show: 3
+              entities:
+                - sensor.sensortemp_haard
+
+            - type: history-graph
+              name: Bureau
+              icon: mdi:server
+              hours_to_show: 3
+              entities:
+                - sensor.sensortemp_bureau
+
+            - type: custom:mini-graph-card
+              name: Bureau
+              icon: mdi:server
+              entities:
+                - entity: sensor.sensortemp_bureau
+                  name: Bureau
+
+            - type: custom:mini-graph-card
+              name: Haard
+              icon: mdi:server
+              entities:
+                - entity: sensor.sensortemp_haard
+                  name: Haard
+            - type: custom:mini-graph-card
+              name: boven
+              icon: mdi:server
+              entities:
+                - entity: sensor.boven_temperature
+                  name: Tado
+                - sensor.motion_bedlkr
+                - sensor.sensortemp_mendy
+                - sensor.sensortemp_badkamer
+
+          #Row 2
+        - type: vertical-stack
+          cards:
+
+            - type: custom:upcoming-media-card
+              entity: sensor.radarr_upcoming_media
+              image_style: poster
+
+            - type: custom:upcoming-media-card
+              entity: sensor.radarr_upcoming_media
+              image_style: fanart
+          #Row 3
+        - type: vertical-stack
+          cards:
+
+            - type: custom:upcoming-media-card
+              entity: sensor.trakt_upcoming_calendar
+              image_style: poster
+
+            - type: custom:upcoming-media-card
+              entity: sensor.trakt_upcoming_calendar
+              image_style: fanart
+
+            - type: custom:monster-card
+              show_empty: false
+              card:
+                type: glance
+                title: Low Battery Devices
+              filter:
+                include:
+                  - entity_id: "*battery_level*"
+                    state: '< 90'
+                  - attributes:
+                      battery: '< 90'
+                  - attributes:
+                      battery_level: '< 90'
+
+            - type: custom:monster-card
+              card:
+                type: entities
+                title: Things that are broken
+              filter:
+                include:
+                  - state: "unknown"
+                  - state: "unavailable"
+                exclude:
+                  - entity_id: group.*

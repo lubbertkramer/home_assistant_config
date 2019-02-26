@@ -1,0 +1,38 @@
+#**********************************************************
+#* FILE    keukentafel.yaml
+#* AUTHOR  Lubbert Kramer
+#**********************************************************
+
+#**********************************************************
+#* KEUKENTAFEL - OVERDAG
+#**********************************************************
+  - name: keukentafel_dag
+    entities:
+      light.keukentafel:
+        state: on
+        brightness: 200
+
+#**********************************************************
+#* KEUKENTAFEL - AVOND
+#**********************************************************
+  - name: keukentafel_avond
+    entities:
+      light.keukentafel:
+        state: on
+        brightness: 150
+
+#**********************************************************
+#* KEUKENTAFEL - NACHT
+#**********************************************************
+  - name: keukentafel_nacht
+    entities:
+      light.keukentafel:
+        state: on
+        brightness: 75
+
+#**********************************************************
+#* KEUKENTAFEL - UIT
+#**********************************************************
+  - name: keukentafel_uit
+    entities:
+      light.keukentafel: off

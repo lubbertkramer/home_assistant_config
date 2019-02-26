@@ -1,0 +1,61 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+
+#**********************************************************
+#* Motion
+#**********************************************************
+- alias: motion_overloop_night
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_overlooptrap,binary_sensor.motion_overloopmendy,binary_sensor.motion_overloopkdv, binary_sensor.contact_babykamer, binary_sensor.contact_badkamer, binary_sensor.contact_slaapkamerkdv, binary_sensor.contact_slaapkamermendy
+      to: 'on'
+  condition:
+    - condition: time
+      after: '22:00'
+      before: '07:00'
+  action:
+    - service: timer.start
+      entity_id: timer.badkamer_lampen
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.badkamer", "off") %}
+            scene.badkamer_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.badkamer", "off") %}
+            scene.badkamer_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.badkamer", "off") %}
+            scene.badkamer_avond
+          {% elif is_state("light.badkamer", "on") %}
+            script.nothing
+          {% endif %}
+#**********************************************************
+#* State
+#**********************************************************
+
+#**********************************************************
+#* Switch
+#**********************************************************
+- alias: button_overlooptrap
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: button_overlooptrap
+      event: 1002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.overloop", "off") %}
+            scene.overloop_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.overloop", "off") %}
+            scene.overloop_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.overloop", "off") %}
+            scene.overloop_avond
+          {% elif is_state("light.overloop", "on") %}
+            scene.overloop_uit
+          {% endif %}
+#**********************************************************
+#* Timers
+#**********************************************************

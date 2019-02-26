@@ -1,0 +1,93 @@
+#**********************************************************
+#* Template Sensors
+#**********************************************************
+  - platform: template
+    sensors:
+
+      motion_buiten:
+        friendly_name: 'beweging buiten'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_achterdeur", "on")
+          or is_state("binary_sensor.motion_voordeur", "on")
+          or is_state("binary_sensor.ring_front_door_motion", "on")
+            -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+
+
+      motion_slaapkamer_kdv:
+        friendly_name: 'beweging slaapkamerkdv'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_bedlkr", "on")
+          or is_state("binary_sensor.motion_bededv", "on")
+           -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+
+
+      motion_bijkeuken:
+        friendly_name: 'beweging bijkeuken'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_bijkeuken", "on")
+            -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+
+      motion_leefruimte:
+        friendly_name: 'beweging leefruimte'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_tuindeuren", "on")
+          or is_state("binary_sensor.motion_bureau", "on")
+            -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+
+      motion_hal:
+        friendly_name: 'Beweging Hal'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_haltrap", "on")
+          or is_state("binary_sensor.motion_hal", "on")
+            -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+
+      motion_overloop:
+        friendly_name: 'beweging overloop'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_overloopmendy", "on")
+          or is_state("binary_sensor.motion_overloopkdv", "on")
+          or is_state("binary_sensor.motion_overlooptrap", "on")
+            -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+
+      motion_badkamer:
+        friendly_name: 'beweging badkamer'
+        device_class: motion
+        value_template: >-
+          {%- if is_state("binary_sensor.motion_badkamer", "on")
+          or is_state("binary_sensor.motion_badkamerbad", "on")
+          or is_state(" binary_sensor.motion_badkamertoilet", "on")
+            -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}

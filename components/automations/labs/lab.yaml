@@ -1,0 +1,49 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+
+#**********************************************************
+#* Motion
+#**********************************************************
+
+#**********************************************************
+#* State
+#**********************************************************
+- alias: lab_testreminder_lkr
+  trigger:
+  - platform: state
+    entity_id: device_tracker.google_maps_116350897273033785476
+    to: home
+  condition: []
+  action:
+  - service: notify.telegram_lkr
+    data:
+      title: Herinnering
+      message: "{{ states.input_text.reminder_lkr.state }}"
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.reminder_lkr
+      value: ''
+
+- alias: lab_testreminder_edv
+  trigger:
+  - platform: state
+    entity_id: device_tracker.google_maps_112346107373671777975
+    to: home
+  condition: []
+  action:
+  - service: notify.telegram_lkr
+    data:
+      title: Herinnering
+      message: "{{ states.input_text.reminder_edv.state }}"
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.reminder_edv
+      value: ''
+#**********************************************************
+#* Switch
+#**********************************************************
+
+#**********************************************************
+#* Timers
+#**********************************************************

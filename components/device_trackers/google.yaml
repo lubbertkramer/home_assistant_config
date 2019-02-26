@@ -1,0 +1,8 @@
+#**********************************************************
+#* Google
+#**********************************************************
+#https://www.home-assistant.io/components/device_tracker.google_maps/
+  - platform: google_maps
+    max_gps_accuracy: 75
+    username: !secret google_maps_username
+    password: !secret google_maps_password

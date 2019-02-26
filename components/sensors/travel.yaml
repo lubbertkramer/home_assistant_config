@@ -1,0 +1,17 @@
+#**********************************************************
+#* SENSORS - TRAVEL
+#**********************************************************
+
+  - platform: waze_travel_time
+    name: travel_waze_edv
+    origin: device_tracker.google_maps_112346107373671777975
+    destination: zone.home
+    realtime: true
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: travel_waze_lkr
+    origin: device_tracker.google_maps_116350897273033785476
+    destination: zone.home
+    realtime: true
+    region: 'EU'

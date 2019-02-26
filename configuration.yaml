@@ -1,0 +1,21 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: HA-1031
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: !secret unit_system
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret time_zone
+  # Customization file
+  customize: !include customize.yaml
+
+#**********************************************************
+#* COMPONENTS
+#**********************************************************
+
+ # Load packages
+  packages: !include_dir_named components/packages

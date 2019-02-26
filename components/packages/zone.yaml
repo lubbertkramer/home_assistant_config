@@ -1,0 +1,3 @@
+# ZONE
+#https://www.home-assistant.io/components/zone/
+zone: !include_dir_merge_list ../zones

@@ -1,0 +1,49 @@
+#**********************************************************
+#* Contact
+#**********************************************************
+
+#**********************************************************
+#* Motion
+#**********************************************************
+
+#**********************************************************
+#* State
+#**********************************************************
+
+#**********************************************************
+#* Switch
+#**********************************************************
+- alias: switch_woonkamer_rechts
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_woonkamer
+      event: 2002
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >-
+          {% if now().hour >= 0 and now().hour < 6 and is_state("light.keukentafel", "off") %}
+            scene.keukentafel_nacht
+          {% elif now().hour >= 6 and now().hour < 18 and is_state("light.keukentafel", "off") %}
+            scene.keukentafel_dag
+          {% elif now().hour >= 18 and now().hour < 24 and is_state("light.keukentafel", "off") %}
+            scene.keukentafel_avond
+          {% elif is_state("light.keukentafel", "on") %}
+            scene.keukentafel_uit
+          {% endif %}
+
+- alias: switch_woonkamer_links
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_woonkamer
+      event: 1002
+  action:
+    - service: light.toggle
+      entity_id: light.woonkamer
+#**********************************************************
+#* Timers
+#**********************************************************

@@ -1,0 +1,43 @@
+#**********************************************************
+#* Command Line
+#**********************************************************
+#https://www.home-assistant.io/components/sensor.command_line/
+  - platform: command_line
+    name: db_file_size
+    command: "du -m /config/home-assistant_v2.db | cut -f1"
+    unit_of_measurement: 'MB'
+    value_template: '{{ value | int - 1 }}'
+
+  - platform: command_line
+    name: log_file_size
+    command: "du -m /config/home-assistant.log | cut -f1"
+    unit_of_measurement: 'MB'
+    value_template: '{{ value | int - 1 }}'
+
+  - platform: command_line
+    command: 'curl https://api.github.com/repos/lubbertkramer/home_assistant_config'
+    name: githubgeneric
+    scan_interval: 3600
+    value_template: '{{ value_json.name }}'
+    json_attributes:
+      - open_issues
+      - subscribers_count
+      - forks
+#      - forks_count
+      - stargazers_count
+      - watchers_count
+
+  - platform: command_line
+    command: 'curl https://api.github.com/repos/lubbertkramer/home_assistant_config/milestones/2'
+    name: githubmilestones
+    scan_interval: 3600
+    value_template: '{{ value_json.name }}'
+    json_attributes:
+      - title
+      - description
+      - open_issues
+      - closed_issues
+#      - state
+#      - created_at
+#      - updated_at
+#      - due_on

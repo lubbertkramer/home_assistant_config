@@ -1,0 +1,33 @@
+#**********************************************************
+#* Generic
+#**********************************************************
+#https://www.home-assistant.io/components/zone/
+  - name: !secret kdv-location-name
+    latitude: !secret kdv-location-latitude
+    longitude: !secret kdv-location-longitude
+    radius: 40
+    icon: mdi:home-heart
+
+  - name: !secret kdv-location1-name
+    latitude: !secret kdv-location1-latitude
+    longitude: !secret kdv-location1-longitude
+    radius: 40
+    icon: mdi:home-heart
+
+  - name: !secret kdv-location2-name
+    latitude: !secret kdv-location2-latitude
+    longitude: !secret kdv-location2-longitude
+    radius: 40
+    icon: mdi:home-heart
+
+  - name: !secret kdv-location3-name
+    latitude: !secret kdv-location3-latitude
+    longitude: !secret kdv-location3-longitude
+    radius: 60
+    icon: mdi:school
+
+  - name: !secret kdv-location4-name
+    latitude: !secret kdv-location4-latitude
+    longitude: !secret kdv-location4-longitude
+    radius: 40
+    icon: mdi:basketball

@@ -1,0 +1,8 @@
+#**********************************************************
+#* LGwebostv
+#**********************************************************
+#https://www.home-assistant.io/components/notify.webostv/
+  - platform: webostv
+    host: !secret lgwebos_host
+    name: LG
+    filename: webostv.conf
