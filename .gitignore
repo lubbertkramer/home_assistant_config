@@ -1,0 +1,39 @@
+#Ignore everything
+*
+
+# Directory (contents) ignores
+.cloud
+.storage
+deps
+download
+
+# Specific file ignores
+.config_entries.json
+.spotify-token-cache
+.google.token
+.google_maps_location_sharing.cookies
+.ring_cache.pickle
+.trakt.conf
+.uuid
+core
+webostv.conf
+ip_bans.yaml
+google_calendars.yaml
+entity_registry.yaml
+known_devices.yaml
+options.xml
+OZW_Log.txt
+pyozw.sqlite
+secrets.yaml
+home-assistant.log
+home-assistant_v2.db
+
+# Share important files
+!.travis.yml
+!.gitignore
+!.HA_VERSION
+!README.md
+!LICENSE
+
+# Specific keeps
+!.gitkeep
