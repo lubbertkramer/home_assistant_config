@@ -11,7 +11,7 @@ __pycache__
 .cloud
 .storage
 deps
-download
+downloads
 
 # Specific file ignores
 .config_entries.json
