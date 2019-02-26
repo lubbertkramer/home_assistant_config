@@ -9,7 +9,7 @@ sensor:
     huisnummer: 1
     toevoeging: A
     label_geen: 'Geen'
-    
+
 20190220 - Bugfix: mijnafvalwijzer added a ton of spaces in the output.
 """
 
@@ -39,7 +39,7 @@ SENSOR_PREFIX = 'trash_'
 
 CONST_POSTCODE = "postcode"
 CONST_HUISNUMMER = "huisnummer"
-CONST_TOEVOEGING = "toevoeging"
+#CONST_TOEVOEGING = "toevoeging"
 CONST_LABEL_NONE = "label_geen"
 
 SCAN_INTERVAL = timedelta(seconds=30)
@@ -49,7 +49,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
   vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
   vol.Required(CONST_POSTCODE): cv.string,
   vol.Required(CONST_HUISNUMMER): cv.string,
-  vol.Optional(CONST_TOEVOEGING, default=""): cv.string,
+  #vol.Optional(CONST_TOEVOEGING, default=""): cv.string,
   vol.Optional(CONST_LABEL_NONE, default="Geen"): cv.string,
 })
 
@@ -58,8 +58,8 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the sensor platform."""
     postcode = config.get(CONST_POSTCODE)
     huisnummer = config.get(CONST_HUISNUMMER)
-    toevoeging = config.get(CONST_TOEVOEGING)
-    url = (f"https://www.mijnafvalwijzer.nl/nl/{postcode}/{huisnummer}/{toevoeging}")
+    #toevoeging = config.get(CONST_TOEVOEGING)
+    url = (f"https://www.mijnafvalwijzer.nl/nl/{postcode}/{huisnummer}/")
 
     logger.debug(f"Request url: {url}")
     response = requests.get(url)
@@ -232,7 +232,7 @@ class TrashCollectionSchedule(object):
         uniqueTrashDates = [x for x in uniqueTrashDates if x != '']
         uniqueTrashDates = [uniqueTrashDates[i:i+3]for i in range(0,len(uniqueTrashDates),3)]
         logger.debug(f"Trash dates conversion output from scraped website data: {uniqueTrashDates}")
-        
+
         try:
             for item in uniqueTrashDates:
                 split_date = item[0].split(' ')
@@ -352,7 +352,7 @@ class TrashCollectionSchedule(object):
         firstWasteType['key'] = 'firstwastetype'
         firstWasteType['value'] = soup.find('p', attrs={'class':'firstWasteType'}).text
         trashSchedule.append(firstWasteType)
-        logger.debug(f"firstDate data succesfully added {firstWasteType}")     
+        logger.debug(f"firstDate data succesfully added {firstWasteType}")
 
         # Return collected data
         logger.debug(f"trashSchedule content {trashSchedule}")
