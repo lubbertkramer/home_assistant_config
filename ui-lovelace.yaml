@@ -40,8 +40,3 @@ resources:
 title: Home Control Panel
 views:
   - !include components/lovelace/home.yaml
-  - !include components/lovelace/homebackup.yaml
-  - !include components/lovelace/template4.yaml
-  - !include components/lovelace/template3.yaml
-  - !include components/lovelace/templatefrenck.yaml
-  - !include components/lovelace/homeassistant.yaml
