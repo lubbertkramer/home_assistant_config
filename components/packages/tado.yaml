@@ -1,5 +1,0 @@
-# TADO
-# https://www.home-assistant.io/components/tado/
-tado:
-  username: !secret tado_username
-  password: !secret tado_password

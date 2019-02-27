@@ -40,3 +40,4 @@ resources:
 title: Home Control Panel
 views:
   - !include components/lovelace/home.yaml
+  - !include components/lovelace/homeassistant.yaml

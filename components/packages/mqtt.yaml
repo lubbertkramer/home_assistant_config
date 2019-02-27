@@ -1,8 +1,0 @@
-# LOCK
-# https://www.home-assistant.io/components/lock.nuki/
-mqtt:
-  broker: !secret mqtt_ip
-  port: !secret mqtt_port
-  client_id: !secret mqtt_clientid
-  username: !secret mqtt_username
-  password: !secret mqtt_password

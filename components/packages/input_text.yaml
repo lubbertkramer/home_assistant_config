@@ -1,8 +1,0 @@
-# INPUT TEXT
-# https://www.home-assistant.io/components/input_text/
-input_text:
-
-  reminder_lkr:
-    name: "Herinnering"
-  reminder_edv:
-    name: "Herinnering"

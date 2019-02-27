@@ -65,7 +65,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     if None in (postcode, huisnummer):
         logger.error("Mijnafvalwijzer - postcode or huisnummer not set!")
 
-    url = (f"https://json.mijnafvalwijzer.nl/?method=postcodecheck&postcode={postcode}&street=&huisnummer={huisnummer}&toevoeging={toevoeging}&platform=phone&langs=nl&")
+    url = (f"https://json.mijnafvalwijzer.nl/?method=postcodecheck&postcode={postcode}&street=&huisnummer={huisnummer}&toevoeging=""&platform=phone&langs=nl&")
     logger.debug(f"Json request url: {url}")
     response = requests.get(url)
 

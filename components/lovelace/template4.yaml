@@ -1,0 +1,108 @@
+#https://www.home-assistant.io/lovelace/
+
+#**********************************************************
+#* Dashboard
+#**********************************************************
+
+id: home
+title: Home
+panel: true
+icon: mdi:home
+background: center / cover no-repeat url("/local/images/backgrounds/clear.jpeg")
+cards:
+
+  - type: custom:layout-card
+    layout: vertical
+    cards:
+
+      #Column 1
+      - type: custom:compact-custom-header
+        main_config: true
+        menu: "show"
+        voice: "clock"
+        options: "show"
+        clock_format: 24
+        clock_am_pm: false
+        #notifications: "hide"
+        exceptions:
+        - conditions:
+            user: "Ellen de Vries"
+          config:
+            hide_tabs: 1,2,3,4,5
+
+      - type: glance
+        entities:
+          - entity: sensor.current_version
+            name: Installed
+            icon: mdi:folder-download
+          - entity: sensor.latest_version
+            name: Latest Release
+            icon: mdi:github-circle
+          - entity: sensor.ssl_certificate_expiry_2
+            name: Traefik SSL Expiration
+            icon: mdi:timelapse
+      - type: entities
+        entities:
+         - input_boolean.debugmode
+         - input_boolean.vacation
+
+      #END COLUMN 1
+      - break
+      #Column 2
+
+      - type: glance
+        entities:
+          - entity: sensor.current_version
+            name: Installed
+            icon: mdi:folder-download
+          - entity: sensor.latest_version
+            name: Latest Release
+            icon: mdi:github-circle
+          - entity: sensor.ssl_certificate_expiry_2
+            name: Traefik SSL Expiration
+            icon: mdi:timelapse
+      - type: entities
+        entities:
+         - input_boolean.debugmode
+         - input_boolean.vacation
+
+
+
+      #END COLUMN 2
+      - break
+      #Column 3
+      - type: glance
+        entities:
+          - entity: sensor.current_version
+            name: Installed
+            icon: mdi:folder-download
+          - entity: sensor.latest_version
+            name: Latest Release
+            icon: mdi:github-circle
+          - entity: sensor.ssl_certificate_expiry_2
+            name: Traefik SSL Expiration
+            icon: mdi:timelapse
+      - type: entities
+        entities:
+         - input_boolean.debugmode
+         - input_boolean.vacation
+
+      #END COLUMN 3
+      - break
+
+      #Column 4
+      - type: glance
+        entities:
+          - entity: sensor.current_version
+            name: Installed
+            icon: mdi:folder-download
+          - entity: sensor.latest_version
+            name: Latest Release
+            icon: mdi:github-circle
+          - entity: sensor.ssl_certificate_expiry_2
+            name: Traefik SSL Expiration
+            icon: mdi:timelapse
+      - type: entities
+        entities:
+         - input_boolean.debugmode
+         - input_boolean.vacation

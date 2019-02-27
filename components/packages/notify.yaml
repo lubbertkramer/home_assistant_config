@@ -1,3 +1,0 @@
-# NOTIFY
-#https://www.home-assistant.io/components/notify/
-notify: !include_dir_merge_list ../notify
