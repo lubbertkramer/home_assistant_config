@@ -16,6 +16,322 @@ homeassistant:
 #**********************************************************
 #* COMPONENTS
 #**********************************************************
-
  # Load packages
-  packages: !include_dir_named components/packages
+#  packages: !include_dir_named components/packages
+#  customize: !include included_configs/customize.yaml
+
+#https://www.home-assistant.io/components/automation/
+automation: !include_dir_merge_list components/automations
+
+#https://www.home-assistant.io/components/binary_sensor/
+binary_sensor: !include_dir_merge_list components/binary_sensors
+
+#https://www.home-assistant.io/components/camera
+camera: !include_dir_merge_list components/cameras
+
+# https://www.home-assistant.io/components/cloud/
+cloud:
+
+# https://www.home-assistant.io/components/config/
+config:
+
+# https://www.home-assistant.io/components/conversation/
+conversation:
+
+# https://www.home-assistant.io/components/counter/
+counter:
+  test:
+    initial: 1
+    step: 1
+
+# https://github.com/custom-components/custom_updater
+custom_updater:
+  show_installable: false
+  hide_sensor: false
+  track:
+    - components
+    - cards
+    - python_scripts
+  component_urls:
+    - https://raw.githubusercontent.com/xirixiz/home-assistant-config/master/custom_updater.json
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
+    - https://raw.githubusercontent.com/ljmerza/calendar-card/master/custom_updater.json
+    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
+    #- https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
+    #- https://raw.githubusercontent.com/kuuji/button-card/0.0.2/tracker.json
+
+#https://www.home-assistant.io/components/device_tracker/
+device_tracker: !include_dir_merge_list components/device_trackers
+
+#https://www.home-assistant.io/components/discovery/
+discovery:
+
+# https://www.home-assistant.io/components/downloader/
+downloader:
+  download_dir: downloads
+
+# FRONTEND
+frontend:
+  javascript_version: latest
+  #extra_html_url:
+    #https://github.com/thomasloven/hass-fontawesome
+    #- /local/fontawesome/hass-fontawesome-solid.html
+    #- /local/fontawesome/hass-fontawesome-regular.html
+    #- /local/fontawesome/hass-fontawesome-brands.html
+  #themes: !include_dir_merge_list components/themes
+
+# https://www.home-assistant.io/components/calendar.google/
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+
+#https://www.home-assistant.io/components/group/
+group:
+  familie_kdv:
+    name: Familie Kramer en de Vries
+    entities:
+      - device_tracker.google_maps_112346107373671777975
+      - device_tracker.google_maps_116350897273033785476
+
+# https://www.home-assistant.io/components/history/
+history:
+
+# https://www.home-assistant.io/components/http/
+http:
+ base_url: https://discovery.kramerendevries.nl
+ api_password: !secret http_api
+ use_x_forwarded_for: true
+ trusted_proxies:
+   - 172.21.0.0/16
+   - 172.30.32.0/23
+   - 172.19.0.0/16
+   - 172.18.0.0/16
+   - 172.17.0.0/16
+   #- 192.168.1.1/24
+
+# https://www.home-assistant.io/components/influxdb/
+influxdb:
+  host: !secret influxdb_host
+  port: !secret influxdb_port
+  database: !secret influxdb_database
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+
+# https://www.home-assistant.io/components/input_boolean
+input_boolean:
+
+  debugmode:
+    name: Debugmodus
+    #initial: off
+    icon: mdi:bug
+
+  vacation:
+    name: Vakantiemodus
+    #initial: off
+    icon: mdi:airplane-takeoff
+
+# https://www.home-assistant.io/components/input_text/
+input_text:
+  reminder_lkr:
+    name: "Herinnering"
+  reminder_edv:
+    name: "Herinnering"
+
+# Show links to resources in log and frontend
+#introduction:
+
+#https://www.home-assistant.io/components/light/
+light: !include_dir_merge_list components/lights
+
+# https://www.home-assistant.io/components/lock.nuki/
+lock:
+  - platform: nuki
+    host: !secret nuki_host
+    token: !secret nuki_token
+
+# https://www.home-assistant.io/components/logbook/
+logbook:
+
+# https://www.home-assistant.io/components/logger/
+logger:
+  default: warn
+  logs:
+    homeassistant.components.deconz: debug
+    pydeconz.websocket: debug
+#    homeassistant.core: warn
+#    homeassistant.components.automation: debug
+#    homeassistant.components.history: warn
+#    homeassistant.components.logbook: warn
+#    homeassistant.components.mqtt: warn
+#    homeassistant.components.http: warn
+#    homeassistant.components.light: debug
+#    homeassistant.components.sensor: warn
+#    homeassistant.components.binary_sensor: warn
+#    homeassistant.components.climate: warn
+#    homeassistant.components.device_tracker: warn
+#    homeassistant.components.discovery: warn
+#    homeassistant.components.media_player: warn
+#    homeassistant.components.recorder: warn
+#    homeassistant.components.influxdb: warn
+#    homeassistant.components.tado: warn
+#    homeassistant.components.websocket_api: warn
+#    homeassistant.components.camera: warn
+#    homeassistant.helpers.script: warn
+#    homeassistant.helpers.entity: warn
+#    homeassistant.exceptions: warn
+#    homeassistant.util.yaml: warn
+#    homeassistant.util.json: warn
+#    homeassistant.setup: warn
+#    homeassistant.bootstrap: warn
+#    homeassistant.loader: warn
+#    homeassistant.helpers.restore_state: warn
+#    custom_components.sensor.authenticated: warn
+#    custom_components.custom_updater: warn
+#    pylgtv.webos_client: warn
+#    websockets.protocol: warn
+#    PyTado.interface: warn
+#    locationsharinglib.Service: warn
+#    telegram.bot: warn
+#    telegram.ext.updater: warn
+#    miio.device: warn
+#    buienradar.buienradar: warn
+#    telegram.vendor.ptb_urllib3.urllib3.connectionpool: warn
+#    WazeRouteCalculator.WazeRouteCalculator: warn
+#    netdisco.ssdp: warn
+#    pydeconz: warn
+#    py.warnings: warn
+
+# https://www.home-assistant.io/lovelace/yaml-mode/
+lovelace:
+  mode: yaml
+
+# https://www.home-assistant.io/components/map/
+map:
+
+#https://www.home-assistant.io/components/media_player/
+media_player: !include_dir_merge_list components/media_players
+
+mqtt:
+  broker: !secret mqtt_ip
+  port: !secret mqtt_port
+  client_id: !secret mqtt_clientid
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+notify: !include_dir_merge_list components/notify
+
+# https://www.home-assistant.io/components/proximity/
+proximity:
+  home_test:
+    zone: home
+    devices:
+      - device_tracker.google_maps_116350897273033785476
+      - device_tracker.google_maps_112346107373671777975
+    tolerance: 50
+    unit_of_measurement: km
+
+  home_lkr:
+    zone: home
+    devices:
+      - device_tracker.google_maps_116350897273033785476
+    tolerance: 25
+    unit_of_measurement: km
+
+  home_edv:
+    zone: home
+    devices:
+      - device_tracker.google_maps_112346107373671777975
+    tolerance: 25
+    unit_of_measurement: km
+
+# https://www.home-assistant.io/components/python_script/
+python_script:
+
+# https://www.home-assistant.io/components/ring/
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+# https://www.home-assistant.io/components/scene/
+scene: !include_dir_merge_list components/scenes
+
+#https://www.home-assistant.io/components/script/
+script:
+  nothing:
+    sequence:
+      delay: 00:00:00
+
+# https://www.home-assistant.io/components/sensor/
+sensor: !include_dir_merge_list components/sensors
+
+# https://www.home-assistant.io/components/sun/
+sun:
+
+# https://www.home-assistant.io/components/system_health/
+system_health:
+
+# https://www.home-assistant.io/components/tado/
+tado:
+  username: !secret tado_username
+  password: !secret tado_password
+
+# https://www.home-assistant.io/components/telegram_bot.broadcast/
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_idNotificaties
+      - !secret telegram_chat_idLog
+      - !secret telegram_chat_idLKR
+
+#timer: !include_dir_merge_list components/timers
+timer:
+#GENERIC
+#Toilet
+  toilet_lampen:
+    duration: '00:10:00'
+#Hal
+  hal_lampen:
+    duration: '00:02:30'
+#Bijkeuken
+  bijkeuken_lampen:
+    duration: '00:02:30'
+#Badkamer
+  badkamer_lampen:
+    duration: '00:10:00'
+
+# https://www.home-assistant.io/components/tts/
+tts:
+  - platform: google
+
+# https://www.home-assistant.io/components/updater/
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret xiaomi_robodown_ip
+    token: !secret xiaomi_robodown_token
+#  - platform: xiaomi_miio
+#    host: !secret xiaomi_robodown2_ip
+#    token: !secret xiaomi_robodown2_token
+
+#https://github.com/rogro82/hass-variables
+variable:
+  last_motion:
+    value: 'Unknown'
+    restore: true
+    attributes:
+      icon: mdi:map-marker
+      name: "Last Motion"
+
+  obs_air:
+    value: 'Unknown'
+
+  obs_sky:
+    value: 'Unknown'
+
+#https://www.home-assistant.io/components/zone/
+zone: !include_dir_merge_list components/zones
