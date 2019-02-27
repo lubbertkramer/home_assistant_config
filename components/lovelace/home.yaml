@@ -57,8 +57,8 @@ cards:
                     #style: {color: white, width: 100%, left: 50%, top: 50%}
                   - type: state-label
                     entity: device_tracker.google_maps_116350897273033785476
-                    prefix: 'LKR -- '
-                    style: {color: white, left: 25%, top: 90%}
+                    #prefix: 'LKR -- '
+                    style: {color: white, left: 30%, top: 90%}
                   - type: state-icon
                     entity:  sensor.battery_lkr
                     tap_action: more_info
@@ -116,8 +116,8 @@ cards:
                     #style: {color: white, width: 100%, left: 50%, top: 50%}
                   - type: state-label
                     entity: device_tracker.google_maps_112346107373671777975
-                    prefix: 'EDV -- '
-                    style: {color: white, left: 25%, top: 90%}
+                    #prefix: 'EDV -- '
+                    style: {color: white, left: 30%, top: 90%}
                   - type: state-icon
                     entity:  sensor.battery_edv
                     tap_action: more_info
