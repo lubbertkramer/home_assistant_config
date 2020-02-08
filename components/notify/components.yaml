@@ -1,0 +1,100 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+###
+#TT
+
+#
+# https://www.home-assistant.io/components/#search/telegram
+  - name: telegram_notificaties
+    platform: telegram
+    chat_id: !secret telegram_chat_idNotificaties
+
+  - name: telegram_log
+    platform: telegram
+    chat_id: !secret telegram_chat_idLog
+
+  - name: telegram_lkr
+    platform: telegram
+    chat_id: !secret telegram_chat_idLKR
+
+  - name: telegram_ha1031
+    platform: telegram
+    chat_id: !secret telegram_chat_ha1031_groep
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

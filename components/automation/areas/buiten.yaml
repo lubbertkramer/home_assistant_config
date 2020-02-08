@@ -1,0 +1,56 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#Contact
+
+#
+# Post in de brievenbus
+- alias: contact_mailbox_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.brievenbuscontact
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.telegram_notificaties
+    data_template:
+      title: 'Notificatie'
+      message: 'De brievenbus is geopend'
+
+#
+# Poort geopend
+- alias: contact_gate_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.poortcontact
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.telegram_notificaties
+    data_template:
+      title: 'Notificatie'
+      message: 'De poort is geopend'
+
+###
+#Motion
+
+
+###
+#Notify
+
+###
+#State
+
+
+###
+#Switch
+
+#
+###
+#Time
+
+###
+#Timers

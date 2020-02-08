@@ -1,0 +1,385 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+#
+# https://www.home-assistant.io/components/automation/
+alarm_control_panel: !include_dir_merge_list components/alarm_control_panel
+
+#
+# https://www.home-assistant.io/components/automation/
+automation: !include_dir_merge_list components/automation
+
+###
+#BB
+
+# #
+# # https://github.com/thomasloven/hass-browser_mod
+# browser_mod:
+#   prefix: "browser_"
+
+#
+# https://github.com/custom-components/breaking_changes
+breaking_changes:
+
+#
+# https://www.home-assistant.io/components/binary_sensor/
+binary_sensor: !include_dir_merge_list components/binary_sensor
+
+###
+#CC
+
+#
+# https://github.com/claytonjn/hass-circadian_lighting
+circadian_lighting:
+
+#
+# https://www.home-assistant.io/components/camera
+camera: !include_dir_merge_list components/camera
+
+#
+# https://www.home-assistant.io/components/cloud/
+cloud:
+
+#
+# https://www.home-assistant.io/components/cover.rfxtrx/
+cover: !include_dir_merge_list components/cover
+
+#
+# https://www.home-assistant.io/components/conversation/
+conversation:
+
+###
+#DD
+
+#
+# https://www.home-assistant.io/components/default_config/
+default_config:
+
+#
+# https://www.home-assistant.io/components/device_tracker/
+device_tracker: !include_dir_merge_list components/device_tracker
+
+#
+# https://www.home-assistant.io/components/discovery/
+discovery:
+
+#
+# https://www.home-assistant.io/components/downloader/
+downloader:
+  download_dir: components/downloader
+
+###
+#EE
+
+###
+#FF
+
+#
+# https://github.com/thomasloven/hass-fontawesome
+fontawesome:
+  regular:
+  solid:
+  brands:
+
+#
+# Frontend
+frontend:
+  javascript_version: latest
+  # extra_html_url:
+  #   #https://github.com/thomasloven/hass-fontawesome
+  #   - /local/fontawesome/hass-fontawesome-solid.html
+  #   - /local/fontawesome/hass-fontawesome-regular.html
+  #   - /local/fontawesome/hass-fontawesome-brands.html
+  # themes: !include_dir_merge_named themes
+  themes: !include_dir_merge_named components/theme
+
+#
+# https://www.home-assistant.io/components/ffmpeg/
+ffmpeg:
+
+###
+#GG
+
+#
+# https://www.home-assistant.io/components/calendar.google/
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+  track_new_calendar: true
+
+#https://www.home-assistant.io/components/google_assistant/
+google_assistant:
+  project_id: !secret google_assistant_projectid
+  service_account: !include HA-1031-60a73581c366.json
+  secure_devices_pin: !secret google_assistant_pin
+  report_state: true
+  expose_by_default: false
+  entity_config: !include_dir_merge_named components/assistant/google
+
+###
+#HH
+
+#
+# https://www.home-assistant.io/components/history/
+history:
+
+#
+# https://www.home-assistant.io/components/http/
+http:
+ base_url: !secret http_base_url
+ #api_password: !secret http_api
+ use_x_forwarded_for: true
+ ip_ban_enabled: false
+ login_attempts_threshold: 5
+ cors_allowed_origins:
+   - https://google.com
+   - https://www.home-assistant.io
+   - https://cast.home-assistant.io
+ trusted_proxies:
+   - 127.0.0.1
+   - 192.168.1.1
+   - 172.21.0.0/16
+   - 172.30.32.0/23
+   - 172.19.0.0/16
+   - 172.18.0.0/16
+   - 172.17.0.0/16
+   - 192.168.1.0/24
+
+###
+#II
+
+#
+# https://www.home-assistant.io/components/#search/input
+input_boolean: !include components/input/input_boolean.yaml
+input_datetime: !include components/input/input_datetime.yaml
+input_number: !include components/input/input_number.yaml
+input_select: !include components/input/input_select.yaml
+input_text: !include components/input/input_text.yaml
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+#
+# https://www.home-assistant.io/integrations/logger/
+logger:
+  default: warning
+  logs:
+    custom_components.logbook_cache: debug
+#
+#https://www.home-assistant.io/components/nuki/
+lock:
+  - platform: nuki
+    host: !secret lock_nuki_ip
+    token: !secret lock_nuki_token
+
+#
+# https://www.home-assistant.io/components/light/
+light: !include_dir_merge_list components/light
+
+#
+# https://www.home-assistant.io/components/logbook/
+logbook:
+
+#https://www.home-assistant.io/lovelace/yaml-mode/
+lovelace:
+  mode: yaml
+
+###
+#MM
+
+#
+# https://www.home-assistant.io/components/map/
+map:
+
+#
+# https://www.home-assistant.io/components/media_player/
+media_player: !include_dir_merge_list components/media_player
+
+###
+#NN
+
+#
+# https://www.home-assistant.io/components/notify/
+notify: !include_dir_merge_list components/notify
+
+###
+#OO
+
+###
+#PP
+
+#
+# https://www.home-assistant.io/components/python_script/
+python_script:
+
+###
+#QQ
+
+###
+#RR
+
+#
+# https://www.home-assistant.io/components/ring/
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+#
+# https://www.home-assistant.io/components/rfxtrx/
+rfxtrx:
+  device: /dev/ttyUSB1
+  debug: true
+
+###
+#SS
+
+# Example configuration.yaml entry
+spotify:
+  client_id: !secret spotify_clientid
+  client_secret: !secret spotify_secret
+
+#
+# https://www.home-assistant.io/integrations/slide/
+slide:
+  username: !secret slideemail
+  password: !secret slidepassword
+  scan_interval: 120
+
+#
+# Speedtest
+speedtestdotnet:
+  server_id: 13218
+  scan_interval:
+    minutes: 60
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+# #
+# # https://www.home-assistant.io/integrations/solaredge/
+# solaredge:
+#   api_key: !secret solar_apikey
+#   site_id: !secret solar_siteid
+
+#
+# Sensors
+sensor: !include_dir_merge_list components/sensor
+
+#
+# https://www.home-assistant.io/components/sun/
+sun:
+
+#
+# https://www.home-assistant.io/components/stream/
+stream:
+
+#
+# https://www.home-assistant.io/components/switch.rest/
+switch: !include_dir_merge_list components/switch
+
+#
+# https://www.home-assistant.io/components/system_health/
+system_health:
+
+#
+# https://www.home-assistant.io/integrations/scene/
+scene: !include_dir_merge_list components/scene
+
+###
+#TT
+
+#
+# https://www.home-assistant.io/components/telegram_bot.broadcast/
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_ha1031_groep
+      - !secret telegram_chat_idNotificaties
+      - !secret telegram_chat_idLog
+      - !secret telegram_chat_idLKR
+      - !secret telegram_chat_ha1031_kanaal
+
+#
+#https://www.home-assistant.io/components/timer/
+timer: !include components/timer/timers.yaml
+
+#
+# Text to speech
+tts:
+  - platform: google_translate
+    language: 'nl'
+
+#
+# https://www.home-assistant.io/components/tado/
+tado:
+  username: !secret tado_username
+  password: !secret tado_password
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+#
+# https://www.home-assistant.io/components/weather.darksky/
+weather:
+  - platform: smartweather
+    api_key: !secret darksky_api_key
+
+#
+# Weatherflow - Smartweather https://github.com/briis/smartweather
+smartweather:
+  station_id: !secret smartweather_station
+  api_key: !secret smartweather_api_key
+
+#
+# https://www.home-assistant.io/integrations/webostv
+webostv:
+  host: !secret lgwebos_host
+  name: LGOLED55B6V
+  # standby_connection: true
+  # turn_on_action:
+  #   service: persistent_notification.create
+  #   data:
+  #     message: "Turn on action"
+  # customize:
+  #   sources:
+  #     - livetv
+  #     - youtube
+  #     - makotv
+  #     - netflix
+
+###
+#XX
+
+###
+#YY
+
+
+###
+#ZZ
+#
+# #
+# # https://www.home-assistant.io/components/zone/
+# zone: !include_dir_merge_list components/zone
+
+
+# group: !include groups.yaml
+# script: !include scripts.yaml
+# scene: !include scenes.yaml

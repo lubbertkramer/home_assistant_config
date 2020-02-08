@@ -1,0 +1,108 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+  development:
+    name: Toilet
+    duration: '00:01:00'
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+#
+# Light timers
+  toiletlicht:
+    name: Toilet
+    duration: '00:05:00'
+
+  hallicht:
+    name: Hal
+    duration: '00:05:00'
+
+  overlooplicht:
+    name: Overloop
+    duration: '00:05:00'
+
+  badkamerlicht:
+    name: Badkamer
+    duration: '00:10:00'
+
+  bijkeukenlicht:
+    name: Bijkeuken
+    duration: '00:05:00'
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+###
+#TT
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

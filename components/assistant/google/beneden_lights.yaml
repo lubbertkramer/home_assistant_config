@@ -1,0 +1,122 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+
+    # light.beganegrond:
+    #   name: Lampen begane grond
+    #   expose: true
+    #   aliases:
+    #     - lampen begane grond
+    #     - lamp begane grond
+    #     - begane grond lamp
+    #     - begane grond lampen
+    #     - lampen beneden
+    #     - lamp beneden
+    #     - beneden lampen
+    #     - beneden lamp
+    #     - lichten begane grond
+    #     - licht begane grond
+    #     - begane grond licht
+    #     - begane grond lichten
+    #     - lichten beneden
+    #     - licht beneden
+    #     - beneden licht
+    #     - beneden lichten
+    #   room: Woning
+
+    light.hal:
+      name: Halverlichting
+      expose: true
+      aliases:
+        - Halverlichting
+        - lampen hal
+        - lamp hal
+        - hal lamp
+        - hal lampen
+        - lichten hal
+        - licht hal
+        - hal licht
+        - hal lichten
+      room: Hal
+
+    # light.toilet:
+    #   name: Lampen Toilet
+    #   expose: true
+    #   aliases:
+    #     - lampen toilet
+    #     - lamp toilet
+    #     - toilet lamp
+    #     - toilet lampen
+    #     - lichten toilet
+    #     - licht toilet
+    #     - toilet licht
+    #     - toilet lichten
+    #     - lampen wc
+    #     - lamp wc
+    #     - wc lamp
+    #     - wc lampen
+    #     - lichten wc
+    #     - licht wc
+    #     - wc licht
+    #     - wc lichten
+    #   room: Toilet
+    #
+    # light.woonkamer:
+    #   name: Lampen Woonkamer
+    #   expose: true
+    #   aliases:
+    #     - lampen woonkamer
+    #     - lamp woonkamer
+    #     - woonkamer lamp
+    #     - woonkamer lampen
+    #     - lichten woonkamer
+    #     - licht woonkamer
+    #     - woonkamer licht
+    #     - woonkamer lichten
+    #   room: Leefruimte
+    #
+    # light.keukentafel:
+    #   name: Lampen Keukentafel
+    #   expose: true
+    #   aliases:
+    #     - lampen keukentafel
+    #     - lamp keukentafel
+    #     - keukentafel lamp
+    #     - keukentafel lampen
+    #     - lichten keukentafel
+    #     - licht keukentafel
+    #     - keukentafel licht
+    #     - keukentafel lichten
+    #     - lampen eetkamer
+    #     - lamp eetkamer
+    #     - eetkamer lamp
+    #     - eetkamer lampen
+    #     - lichten eetkamer
+    #     - licht eetkamer
+    #     - eetkamer licht
+    #     - eetkamer lichten
+    #   room: Leefruimte
+    #
+    # light.achterhoek:
+    #   name: Lampen Achterhoek
+    #   expose: true
+    #   aliases:
+    #     - lampen achterhoek
+    #     - lamp achterhoek
+    #     - achterhoek lamp
+    #     - achterhoek lampen
+    #     - lichten achterhoek
+    #     - licht achterhoek
+    #     - achterhoek licht
+    #     - achterhoek lichten
+    #     - lampen kantoor
+    #     - lamp kantoor
+    #     - kantoor lamp
+    #     - kantoor lampen
+    #     - lichten kantoor
+    #     - licht kantoor
+    #     - kantoor licht
+    #     - kantoor lichten
+    #   room: Leefruimte

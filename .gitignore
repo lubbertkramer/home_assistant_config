@@ -1,0 +1,48 @@
+#Ignore everything
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+._*
+__pycache__
+
+# Directory (contents) ignores
+.cloud
+.storage
+deps
+components/lovelace
+
+# Specific file ignores
+.config_entries.json
+.google.token
+.google_maps_location_sharing.cookies
+.google_maps_location_sharing.cookies.kramerendevries_gmail_com
+.ps4-games.json
+.ring_cache.pickle
+.spotify-token-cache
+.trakt.conf
+.uuid
+core
+ip_bans.yaml
+google_calendars.yaml
+entity_registry.yaml
+options.xml
+OZW_Log.txt
+pyozw.sqlite
+home-assistant.log
+home-assistant_v2.db
+known_devices.yaml
+secrets.yaml
+webostv.conf
+HA-1031-60a73581c366.json
+
+# Share important files
+!.travis.yml
+!.gitignore
+!.HA_VERSION
+!README.md
+!LICENSE
+
+# Specific keeps
+!.gitkeep

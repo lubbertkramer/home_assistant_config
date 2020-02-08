@@ -1,0 +1,109 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+#
+# https://www.home-assistant.io/components/rfxtrx/
+  - platform: rfxtrx
+    automatic_add: false
+    devices:
+      09190603273287700062:
+        name: BenedenRolluiken
+      09190600273287740062:
+        name: BureauRolluiken
+      09190600273287730162:
+        name: EetkamerRolluiken
+      09190601273287720162:
+        name: HalRolluiken
+      09190602273287710162:
+        name: VoorraamRolluiken
+      09190616823185500162:
+        name: BovenRolluiken
+      09190617823185510162:
+        name: SlpKdVRolluiken
+      09190618823185520162:
+        name: SlpRobinRolluiken
+      09190613823185530062:
+        name: Boven3eRolluiken
+      09190614823185540162:
+        name: Boven4eRolluiken
+      09190615823185550162:
+        name: Boven5eRolluiken
+###
+#SS
+
+###
+#TT
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

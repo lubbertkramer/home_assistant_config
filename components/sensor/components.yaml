@@ -1,0 +1,183 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+#
+# https://www.home-assistant.io/components/dnsip/
+  - platform: dnsip
+
+#
+# https://www.home-assistant.io/components/darksky/
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    language: nl
+    forecast:
+      - 0
+      - 1
+    # hourly_forecast:
+    #   - 3
+    monitored_conditions:
+      - summary
+      - temperature
+      - hourly_summary
+      - daily_summary
+      - temperature_high
+      - temperature_low
+      - apparent_temperature #gevoels
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - precip_accumulation
+      # - apparent_temperature_high
+      # - apparent_temperature_low
+      # - precip_intensity_max
+      - uv_index
+    scan_interval:
+      # At least one of these must be specified:
+      days: 0
+      hours: 0
+      minutes: 59
+      seconds: 0
+      milliseconds: 0
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+#
+# https://www.home-assistant.io/components/sensor.github/
+  - platform: github
+    access_token: !secret github_access_token
+    repositories:
+      - path: 'home-assistant/home-assistant'
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+#
+# https://www.home-assistant.io/components/sensor.moon/
+  - platform: moon
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+# #
+# # https://community.home-assistant.io/t/lovelace-postnl/112433 / https://www.home-assistant.io/components/sensor.postnl/
+#   - platform: postnl
+#     name: PostNL Lubbert
+#     username: !secret postnl_username_1
+#     password: !secret postnl_password_1
+#
+#   - platform: postnl
+#     name: PostNL Ellen
+#     username: !secret postnl_username_2
+#     password: !secret postnl_password_2
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+#
+# https://www.home-assistant.io/components/sensor.season/
+  - platform: season
+    type: astronomical
+
+###
+#TT
+
+#
+# https://www.home-assistant.io/components/sensor.time_date/
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+
+###
+#UU
+
+#
+# https://www.home-assistant.io/components/sensor.uptime/
+  - platform: uptime
+    unit_of_measurement: minutes
+
+  - platform: uptime
+    unit_of_measurement: hours
+
+  - platform: uptime
+    unit_of_measurement: days
+
+###
+#VV
+
+#
+# https://www.home-assistant.io/components/sensor.version/
+  - platform: version
+    source: local
+
+  - platform: version
+    source: docker
+
+###
+#WW
+
+#
+# https://www.home-assistant.io/components/sensor.worldclock/
+  - platform: worldclock
+    time_zone: Europe/Amsterdam
+
+###
+#XX
+
+###
+#YY
+
+#
+# https://www.home-assistant.io/components/sensor.yr/
+  - platform: yr
+
+###
+#ZZ

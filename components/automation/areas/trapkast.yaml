@@ -1,0 +1,50 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#Contact
+
+#
+# Contact On
+- alias: contact_trapkast_on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.trapkastcontact
+    from: 'off'
+    to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.trapkast
+
+#
+# Contact off
+- alias: contact_trapkast_off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.trapkastcontact
+    from: 'on'
+    to: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.trapkast
+
+###
+#Motion
+
+###
+#Notify
+
+###
+#State
+
+###
+#Switch
+
+#
+###
+#Time
+
+###
+#Timers

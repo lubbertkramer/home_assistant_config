@@ -1,0 +1,97 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+###
+#TT
+
+#
+# Test
+  both_date_and_time:
+    name: Test with both date and time
+    has_date: true
+    has_time: true
+  only_date:
+    name: Test with only date
+    has_date: true
+    has_time: false
+  only_time:
+    name: Test with only time
+    has_date: false
+    has_time: true
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

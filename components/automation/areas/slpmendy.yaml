@@ -1,0 +1,132 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#Contact
+
+###
+#Motion
+
+###
+#Notify
+
+###
+#State
+
+###
+#Switch
+
+#
+# slpmendydimmer
+
+#
+# Button 1
+- alias: dimmer_mendy_on
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpmendydimmer
+      event: 1002
+      # event: 1003 = hold
+  action:
+    service: light.turn_on
+    data:
+      rgb_color: [253, 255, 69]
+    entity_id: light.slpmendy
+
+#
+# Button 2
+- alias: dimmer_mendy_brightness_up
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpmendydimmer
+      event: 2002
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.slpmendy
+      brightness: >
+        {% set brightness = (state_attr('light.slpmendy', 'brightness')) | int | round(0) %}
+        {% set new_brightness = brightness + 25 %}
+        {% if new_brightness < 225 %}
+          {{ new_brightness }}
+        {% else %}
+          255
+        {% endif %}
+
+#
+# Button 2 hold
+- alias: dimmer_mendy_brightness_up_hold
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpmendydimmer
+      event: 2003
+  action:
+    service: light.turn_on
+    data_template:
+      rgb_color: ['{{ (range(0, 255)|random) }}','{{ (range(0, 255)|random) }}','{{ (range(0, 255)|random) }}']
+    entity_id: light.slpmendy
+
+#
+# Button 3
+- alias: dimmer_mendy_brightness_down
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpmendydimmer
+      event: 3002
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.slpmendy
+      brightness: >
+        {% set brightness = (state_attr('light.slpmendy', 'brightness')) | int | round(0) %}
+        {% set new_brightness = brightness - 25 %}
+        {% if new_brightness > 30 %}
+          {{ new_brightness }}
+        {% else %}
+          10
+        {% endif %}
+
+#
+# Button 3 hold
+- alias: dimmer_mendy_brightness_down_hold
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpmendydimmer
+      event: 3003
+  action:
+    service: light.turn_on
+    data:
+      effect: colorloop
+    entity_id: light.slpmendy
+
+#
+# Button 4
+- alias: dimmer_slpkdv_off
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpmendydimmer
+      event: 4002
+  action:
+    service: light.turn_off
+    entity_id: light.slpmendy
+
+#
+###
+#Time
+
+###
+#Timers

@@ -1,0 +1,222 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+
+###
+#AA
+
+#
+# Light group achterhoek
+  - platform: group
+    name: achterhoek
+    entities:
+      - light.bureaulamp01
+      - light.bureaustrip01
+      - light.haardlamp01
+
+###
+#BB
+
+#
+# Light group ground floor
+  - platform: group
+    name: beganegrond
+    entities:
+      - light.toiletlamp01
+      - light.hallamp01
+      - light.hallamp02
+      - light.hallamp03
+      - light.hallamp04
+      - light.trapkastlamp01
+      - light.trapkastlamp02
+      - light.bijkeukenlamp01
+      - light.bijkeukenlamp02
+      - light.bureaulamp01
+      - light.bureaustrip01
+      - light.haardlamp01
+      - light.keukenstrip01
+      - light.keukentafellamp01
+      - light.keukentafellamp02
+      - light.tvlamp01
+      - light.tvlamp02
+      - light.tvstrip01
+      - light.voorraamlamp01
+      - light.voorraamstrip01
+
+#
+# Light group bijkeuken
+  - platform: group
+    name: bijkeuken
+    entities:
+      - light.bijkeukenlamp01
+      - light.bijkeukenlamp02
+
+#
+# Light group badkamer
+  - platform: group
+    name: badkamer
+    entities:
+      - light.badkamerlamp01
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+#
+# Light group eetkamer
+  - platform: group
+    name: eetkamer
+    entities:
+      - light.keukentafellamp01
+      - light.keukentafellamp02
+
+#
+# Light group first floor
+  - platform: group
+    name: eersteverdieping
+    entities:
+      - light.overlooplamp01
+      - light.overlooplamp02
+      - light.badkamerlamp01
+      - light.slpkdvlamp01
+      - light.slpkdvlamp02
+      - light.slpkdvstrip01
+      - light.slpmendylamp01
+      - light.slpmendylamp02
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+#
+# Light group hal
+  - platform: group
+    name: hal
+    entities:
+      - light.hallamp01
+      - light.hallamp02
+      - light.hallamp03
+      - light.hallamp04
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+#
+# Light group keuken
+  - platform: group
+    name: keuken
+    entities:
+      - light.keukenstrip01
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+#
+# Light group overloop
+  - platform: group
+    name: overloop
+    entities:
+      - light.overlooplamp01
+      - light.overlooplamp02
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+#
+# Light group slpkdv
+  - platform: group
+    name: slpKdV
+    entities:
+      - light.slpkdvlamp01
+      - light.slpkdvlamp02
+      - light.slpkdvstrip01
+
+#
+# Light group slpMendy
+  - platform: group
+    name: slpMendy
+    entities:
+      - light.slpmendylamp01
+      - light.slpmendylamp02
+###
+#TT
+
+#
+# Light group toilet
+  - platform: group
+    name: toilet
+    entities:
+      - light.toiletlamp01
+
+#
+# Light group trapkast
+  - platform: group
+    name: trapkast
+    entities:
+      - light.trapkastlamp01
+      - light.trapkastlamp02
+
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+#
+# Light group woonkamer
+  - platform: group
+    name: woonkamer
+    entities:
+      - light.tvlamp01
+      - light.tvlamp02
+      - light.tvstrip01
+      - light.voorraamlamp01
+      - light.voorraamstrip01
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

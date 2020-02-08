@@ -1,0 +1,241 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+# title: Test
+# Checking
+# https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/42
+# https://community.home-assistant.io/t/homekit-infused-hki-v1-0-alpha-updated-21-01-2020/117086/481
+# https://community.home-assistant.io/t/daily-energy-monitoring/143436
+# https://community.home-assistant.io/t/a-different-take-on-designing-a-lovelace-ui/162594
+
+resources:
+
+###
+#AA
+
+###
+#BB
+
+# #
+# # https://github.com/thomasloven/hass-browser_mod
+#   - url: /browser_mod.js
+#   # - url: /community_plugin/browser_mod/browser_mod.js
+#     type: module
+
+#
+# https://github.com/nervetattoo/banner-card
+  - url: /community_plugin/banner-card/banner-card.js
+    type: module
+
+
+#
+# https://github.com/custom-cards/button-card
+  - url: /community_plugin/button-card/button-card.js
+    type: module
+
+#
+# https://github.com/DBuit/blinds-tile-card
+  - url: /community_plugin/blinds-tile-card/blinds-tile-card.js
+    type: module
+
+#
+# https://github.com/DBuit/blinds-popup-card
+  - url: /community_plugin/blinds-popup-card/blinds-popup-card.js
+    type: module
+
+###
+#CC
+
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
+    type: module
+
+#
+# https://github.com/DBuit/cover-popup-card
+  - url: /community_plugin/cover-popup-card/cover-popup-card.js
+    type: module
+
+#
+# https://github.com/custom-cards/circle-sensor-card
+  - url: /community_plugin/circle-sensor-card/circle-sensor-card.js
+    type: module
+
+#
+# https://github.com/thomasloven/lovelace-card-tools
+
+
+#
+# https://github.com/thomasloven/lovelace-card-mod
+  - url: /community_plugin/lovelace-card-mod/card-mod.js
+    type: module
+
+#
+# https://github.com/maykar/custom-header
+  - url: /community_plugin/custom-header/custom-header.js
+    type: module
+
+###
+#DD
+
+#
+# https://github.com/custom-cards/decluttering-card
+  - url: /community_plugin/decluttering-card/decluttering-card.js
+    type: module
+
+###
+#EE
+
+###
+#FF
+
+#
+# https://github.com/AmoebeLabs/flex-horseshoe-card
+  - url: /community_plugin/flex-horseshoe-card/flex-horseshoe-card.js
+    type: module
+
+###
+#GG
+
+###
+#HH
+
+#
+# https://github.com/DBuit/Homekit-panel-card
+  - url: /community_plugin/Homekit-panel-card/homekit-panel-card.js
+    type: module
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+#
+# https://github.com/DBuit/light-popup-card
+  - url: /community_plugin/light-popup-card/light-popup-card.js
+    type: module
+
+#
+# https://github.com/thomasloven/lovelace-layout-card
+  - url: /community_plugin/lovelace-layout-card/layout-card.js
+    type: module
+
+#
+# https://github.com/ljmerza/light-entity-card
+  - url: /community_plugin/light-entity-card/light-entity-card.js
+    type: js
+
+###
+#MM
+
+#
+# https://github.com/DBuit/media_player-popup-card
+  - url: /community_plugin/media_player-popup-card/media_player-popup-card.js
+    type: module
+
+#
+# https://github.com/kalkih/mini-graph-card
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+    type: module
+
+#
+# https://github.com/kalkih/mini-media-player
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+    type: module
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+#
+# https://github.com/gurbyz/power-wheel-card
+  - url: /community_plugin/power-wheel-card/power-wheel-card.js
+    type: module
+
+###
+#QQ
+
+###
+#RR
+
+#
+# https://github.com/bokub/rgb-light-card
+  - url: /community_plugin/rgb-light-card/card.js
+    type: js
+
+###
+#SS
+
+#
+# https://github.com/DBuit/switch-popup-card
+  - url: /community_plugin/switch-popup-card/switch-popup-card.js
+    type: module
+
+#
+# https://github.com/thomasloven/lovelace-state-switch
+  - url: /community_plugin/lovelace-state-switch/state-switch.js
+    type: module
+
+#
+# https://github.com/postlund/search-card
+  - url: /community_plugin/search-card/search-card.js
+    type: module
+
+#
+# https://github.com/kalkih/simple-weather-card
+  - url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
+    type: module
+
+###
+#TT
+
+#
+# https://github.com/DBuit/thermostat-popup-card
+  - url: /community_plugin/thermostat-popup-card/thermostat-popup-card.js
+    type: module
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ
+
+###
+# Config modules
+
+###
+#Includes:
+# decluttering_templates:
+#   !include components/lovelace/decluttering_templates/template.yaml
+
+###
+# Views
+views:
+  - !include components/lovelace/temp.yaml #0
+  - !include components/lovelace/home.yaml #1
+  - !include components/lovelace/ha-lights.yaml #2
+#   - !include components/lovelace/dev1.yaml #3
+#   - !include components/lovelace/test.yaml #4

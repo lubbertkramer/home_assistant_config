@@ -1,0 +1,92 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+#
+# https://www.home-assistant.io/integrations/stookalert/
+  - platform: stookalert
+    province: !secret stookalert_provincie
+
+###
+#TT
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+#
+# https://www.home-assistant.io/components/binary_sensor.workday/
+  - platform: workday
+    country: NL
+    
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

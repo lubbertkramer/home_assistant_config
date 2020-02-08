@@ -1,0 +1,95 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+#
+# https://www.home-assistant.io/components/#search/cover%20group
+  - platform: group
+    name: GordijnenBeneden
+    entities:
+      - cover.voorraam
+      - cover.tuindeuren
+
+  - platform: group
+    name: GordijnenBoven
+    entities:
+      - cover.slaapkamer
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+###
+#TT
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

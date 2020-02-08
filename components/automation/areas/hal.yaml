@@ -1,0 +1,227 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#Contact
+
+#
+# Contact and timer idle -> turn lights on
+- alias: contact_hal_timer_idle
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.voordeurcontact
+        - binary_sensor.toiletcontact
+      from: 'off'
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: timer.hallicht
+        state: 'idle'
+      - condition: state
+        entity_id: input_boolean.automation_all
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.automation_lights
+        state: 'off'
+      - condition: or  # 'when dark' condition: either after sunset or before sunrise
+        conditions:
+          - condition: sun
+            after: sunset
+            after_offset: '-03:00:00'
+          - condition: sun
+            before: sunrise
+            before_offset: '+03:00:00'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.hal
+
+#
+# Contact and timer running -> reset timer
+- alias: contact_hal_timer_on
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.voordeurcontact
+        - binary_sensor.toiletcontact
+      from: 'off'
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: timer.hallicht
+        state: 'active'
+      - condition: state
+        entity_id: input_boolean.automation_all
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.automation_lights
+        state: 'off'
+  action:
+  - service: timer.cancel
+    entity_id: timer.hallicht
+  - delay: '00:00:03'
+  - service: timer.start
+    entity_id: timer.hallicht
+
+###
+#Motion
+
+#
+# Motion and timer idle -> turn lights on
+- alias: motion_hal_timer_idle
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.haltrapmotion01
+        - binary_sensor.halvoordeurmotion01
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: timer.hallicht
+        state: 'idle'
+      - condition: state
+        entity_id: input_boolean.automation_all
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.automation_lights
+        state: 'off'
+      - condition: or  # 'when dark' condition: either after sunset or before sunrise
+        conditions:
+          - condition: sun
+            after: sunset
+            after_offset: '-03:00:00'
+          - condition: sun
+            before: sunrise
+            before_offset: '+03:00:00'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.hal
+
+#
+# Motion and timer running -> reset timer
+- alias: motion_hal_timer_on
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.haltrapmotion01
+        - binary_sensor.halvoordeurmotion01
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: timer.hallicht
+        state: 'active'
+      - condition: state
+        entity_id: input_boolean.automation_all
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.automation_lights
+        state: 'off'
+  action:
+  - service: timer.cancel
+    entity_id: timer.hallicht
+  - delay: '00:00:03'
+  - service: timer.start
+    entity_id: timer.hallicht
+
+###
+#Notify
+
+###
+#State
+
+#
+# State lights turned to on - start timer - when state emergency don't start timer
+- alias: state_hal_light_on
+  trigger:
+    platform: state
+    entity_id: light.hal
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_emergency
+      state: 'off'
+  action:
+    - service: timer.start
+      entity_id: timer.hallicht
+
+#
+# State lights turned to off -> cancel timers
+- alias: state_hal_light_off
+  trigger:
+    platform: state
+    entity_id: light.hal
+    from: 'on'
+    to: 'off'
+  action:
+    - service: timer.cancel
+      entity_id: timer.hallicht
+
+###
+#Switch
+
+#
+# Switch left
+- alias: switch_hal_left
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: haltrapschakelaar
+      event: 1002
+  action:
+    - service: light.toggle
+      entity_id: light.overloop
+
+#
+# Switch right
+- alias: switch_hal_right
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: haltrapschakelaar
+      event: 2002
+  action:
+    - service: light.toggle
+      entity_id: light.hal
+
+#
+###
+#Time
+
+###
+#Timers
+
+#
+# Timer runs to zero
+- alias: timer_hal_lights_finished
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.hallicht
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.automation_all
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.automation_timers
+        state: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.hal

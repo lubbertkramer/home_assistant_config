@@ -1,0 +1,241 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+#
+#https://www.home-assistant.io/components/sensor.template/
+  - platform: template
+    sensors:
+###
+#AA
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+      # lamphal_percent:
+      #   value_template: >-
+      #     {% if is_state('light.hal', 'on') %} {{ (state_attr('light.hal', 'brightness') / 2.54) | round }}{% endif %}
+      #
+      # lamptoilet_percent:
+      #   value_template: >-
+      #     {% if is_state('light.toilet', 'on') %} {{ (state_attr('light.toilet', 'brightness') / 2.54) | round }}{% endif %}
+      #
+      # lamptrapkast_percent:
+      #   value_template: >-
+      #     {% if is_state('light.trapkast', 'on') %} {{ (state_attr('light.trapkast', 'brightness') / 2.54) | round }}{% endif %}
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+#
+#  switch.3dprinter
+
+#
+# switch.droger
+      droger_usage_amps:
+        friendly_name_template: "{{ states.switch.droger.name}} Current"
+        value_template: '{{ states.switch.droger.attributes["current_a"] | float }}'
+        unit_of_measurement: 'A'
+      droger_usage_watts:
+        friendly_name_template: "{{ states.switch.droger.name}} Current Consumption"
+        value_template: '{{ states.switch.droger.attributes["current_power_w"] | float }}'
+        unit_of_measurement: 'W'
+      droger_usage_total_kwh:
+        friendly_name_template: "{{ states.switch.droger.name}} Total Consumption"
+        value_template: '{{ states.switch.droger.attributes["total_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+      droger_usage_volts:
+        friendly_name_template: "{{ states.switch.droger.name}} Voltage"
+        value_template: '{{ states.switch.droger.attributes["voltage"] | float }}'
+        unit_of_measurement: 'V'
+      droger_usage_today_kwh:
+        friendly_name_template: "{{ states.switch.droger.name}} Today's Consumption"
+        value_template: '{{ states.switch.droger.attributes["today_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+
+
+#
+# switch.nas
+      nas_usage_amps:
+        friendly_name_template: "{{ states.switch.nas.name}} Current"
+        value_template: '{{ states.switch.nas.attributes["current_a"] | float }}'
+        unit_of_measurement: 'A'
+      nas_usage_watts:
+        friendly_name_template: "{{ states.switch.nas.name}} Current Consumption"
+        value_template: '{{ states.switch.nas.attributes["current_power_w"] | float }}'
+        unit_of_measurement: 'W'
+      nas_usage_total_kwh:
+        friendly_name_template: "{{ states.switch.nas.name}} Total Consumption"
+        value_template: '{{ states.switch.nas.attributes["total_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+      nas_usage_volts:
+        friendly_name_template: "{{ states.switch.nas.name}} Voltage"
+        value_template: '{{ states.switch.nas.attributes["voltage"] | float }}'
+        unit_of_measurement: 'V'
+      nas_usage_today_kwh:
+        friendly_name_template: "{{ states.switch.nas.name}} Today's Consumption"
+        value_template: '{{ states.switch.nas.attributes["today_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+
+#
+# switch.nuc
+      nuc_usage_amps:
+        friendly_name_template: "{{ states.switch.nuc.name}} Current"
+        value_template: '{{ states.switch.nuc.attributes["current_a"] | float }}'
+        unit_of_measurement: 'A'
+      nuc_usage_watts:
+        friendly_name_template: "{{ states.switch.nuc.name}} Current Consumption"
+        value_template: '{{ states.switch.nuc.attributes["current_power_w"] | float }}'
+        unit_of_measurement: 'W'
+      nuc_usage_total_kwh:
+        friendly_name_template: "{{ states.switch.nuc.name}} Total Consumption"
+        value_template: '{{ states.switch.nuc.attributes["total_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+      nuc_usage_volts:
+        friendly_name_template: "{{ states.switch.nuc.name}} Voltage"
+        value_template: '{{ states.switch.nuc.attributes["voltage"] | float }}'
+        unit_of_measurement: 'V'
+      nuc_usage_today_kwh:
+        friendly_name_template: "{{ states.switch.nuc.name}} Today's Consumption"
+        value_template: '{{ states.switch.nuc.attributes["today_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+
+#
+# switch.pc
+      droger_usage_amps:
+        friendly_name_template: "{{ states.switch.pc.name}} Current"
+        value_template: '{{ states.switch.pc.attributes["current_a"] | float }}'
+        unit_of_measurement: 'A'
+      pc_usage_watts:
+        friendly_name_template: "{{ states.switch.pc.name}} Current Consumption"
+        value_template: '{{ states.switch.pc.attributes["current_power_w"] | float }}'
+        unit_of_measurement: 'W'
+      pc_usage_total_kwh:
+        friendly_name_template: "{{ states.switch.pc.name}} Total Consumption"
+        value_template: '{{ states.switch.pc.attributes["total_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+      pc_usage_volts:
+        friendly_name_template: "{{ states.switch.pc.name}} Voltage"
+        value_template: '{{ states.switch.pc.attributes["voltage"] | float }}'
+        unit_of_measurement: 'V'
+      pc_usage_today_kwh:
+        friendly_name_template: "{{ states.switch.pc.name}} Today's Consumption"
+        value_template: '{{ states.switch.pc.attributes["today_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+
+#
+# switch.vaatwasser
+      vaatwasser_usage_amps:
+        friendly_name_template: "{{ states.switch.vaatwasser.name}} Current"
+        value_template: '{{ states.switch.vaatwasser.attributes["current_a"] | float }}'
+        unit_of_measurement: 'A'
+      vaatwasser_usage_watts:
+        friendly_name_template: "{{ states.switch.vaatwasser.name}} Current Consumption"
+        value_template: '{{ states.switch.vaatwasser.attributes["current_power_w"] | float }}'
+        unit_of_measurement: 'W'
+      vaatwasser_usage_total_kwh:
+        friendly_name_template: "{{ states.switch.vaatwasser.name}} Total Consumption"
+        value_template: '{{ states.switch.vaatwasser.attributes["total_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+      vaatwasser_usage_volts:
+        friendly_name_template: "{{ states.switch.vaatwasser.name}} Voltage"
+        value_template: '{{ states.switch.vaatwasser.attributes["voltage"] | float }}'
+        unit_of_measurement: 'V'
+      vaatwasser_usage_today_kwh:
+        friendly_name_template: "{{ states.switch.vaatwasser.name}} Today's Consumption"
+        value_template: '{{ states.switch.vaatwasser.attributes["today_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+
+ #
+ # switch.wasmachine
+      wasmachine_usage_amps:
+        friendly_name_template: "{{ states.switch.wasmachine.name}} Current"
+        value_template: '{{ states.switch.wasmachine.attributes["current_a"] | float }}'
+        unit_of_measurement: 'A'
+      wasmachine_usage_watts:
+        friendly_name_template: "{{ states.switch.wasmachine.name}} Current Consumption"
+        value_template: '{{ states.switch.wasmachine.attributes["current_power_w"] | float }}'
+        unit_of_measurement: 'W'
+      wasmachine_usage_total_kwh:
+        friendly_name_template: "{{ states.switch.wasmachine.name}} Total Consumption"
+        value_template: '{{ states.switch.wasmachine.attributes["total_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+      wasmachine_usage_volts:
+        friendly_name_template: "{{ states.switch.wasmachine.name}} Voltage"
+        value_template: '{{ states.switch.wasmachine.attributes["voltage"] | float }}'
+        unit_of_measurement: 'V'
+      wasmachine_usage_today_kwh:
+        friendly_name_template: "{{ states.switch.wasmachine.name}} Today's Consumption"
+        value_template: '{{ states.switch.wasmachine.attributes["today_energy_kwh"] | float }}'
+        unit_of_measurement: 'kWh'
+###
+#TT
+      testamphal_percent:
+        value_template: >-
+          {% if is_state('light.hal', 'on') %} {{ (state_attr('light.hal', 'brightness') / 2.54) | round }}{% endif %}
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+###
+#XX
+
+###
+#YY
+
+###
+#ZZ

@@ -1,0 +1,170 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#AA
+
+#
+# https://github.com/xirixiz/home-assistant-config
+  - platform: afvalwijzer
+    # provider: mijnafvalwijzer
+    zipcode: !secret afvalwijzer_postcode
+    housenumber: !secret afvalwijzer_huisnummer
+    #toevoeging:
+    #label_geen: 'Geen'
+
+###
+#BB
+
+###
+#CC
+
+###
+#DD
+
+###
+#EE
+
+###
+#FF
+
+###
+#GG
+
+###
+#HH
+
+###
+#II
+
+###
+#JJ
+
+###
+#KK
+
+###
+#LL
+
+###
+#MM
+
+###
+#NN
+
+###
+#OO
+
+###
+#PP
+
+###
+#QQ
+
+###
+#RR
+
+###
+#SS
+
+#
+# https://github.com/custom-components/sensor.radarr_upcoming_media
+  - platform: radarr_upcoming_media
+    api_key: !secret radarr_api
+    host: !secret radarr_host
+    port: !secret radarr_port
+    days: 2
+    ssl: false
+    theaters: false
+    max: 10
+
+###
+#SS
+
+#
+# https://github.com/custom-components/sensor.sonarr_upcoming_media
+  - platform: sonarr_upcoming_media
+    api_key: !secret sonarr_api
+    host: !secret sonarr_host
+    port: !secret sonarr_port
+    days: 2
+    ssl: false
+    max: 10
+
+###
+#TT
+
+#
+# https://github.com/custom-components/sensor.trakt
+  - platform: trakt
+    id: !secret trakt_id
+    secret: !secret trakt_secret
+    username: !secret trakt_user
+    days: 10
+    # exclude:
+    #   'The Bachelor'
+
+
+###
+#UU
+
+###
+#VV
+
+###
+#WW
+
+#
+# Weatherflow - Smartweatherhttps://github.com/briis/smartweather
+  - platform: smartweather
+    wind_unit: kmh
+    monitored_conditions:
+      - temperature
+      - feels_like_temperature
+      - heat_index
+      - wind_chill
+      - dewpoint
+      - wind_speed
+      - wind_gust
+      - wind_lull
+      - wind_bearing
+      - wind_direction
+      - precipitation
+      - precipitation_rate
+      - precipitation_last_1hr
+      - precipitation_yesterday
+      - precip_minutes_local_day
+      - precip_minutes_local_yesterday
+      - humidity
+      - pressure
+      - uv
+      - solar_radiation
+      - illuminance
+      - lightning_count
+
+###
+#XX
+
+###
+#YY
+
+#
+# https://github.com/reharmsen/hass-youless-component
+  - platform: youless
+    name: Youless
+    host: !secret youless_ip
+    monitored_variables:
+      - pwr
+      - net
+      - p1
+      - p2
+      # - n1
+      # - n2
+      # - cs0
+      # - ps0
+      - gas
+
+###
+#ZZ

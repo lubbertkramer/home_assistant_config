@@ -1,0 +1,52 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#Contact
+
+###
+#Motion
+
+###
+#Notify
+
+###
+#State
+
+###
+#Switch
+
+#
+# Switch left
+- alias: switch_woonkamer_left
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: woonkamerschakelaar
+      event: 1002
+  action:
+    - service: light.toggle
+      entity_id: light.woonkamer
+
+#
+# Switch right
+- alias: switch_woonkamer_right
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: woonkamerschakelaar
+      event: 2002
+  action:
+    - service: light.toggle
+      entity_id: light.eetkamer
+
+#
+###
+#Time
+
+###
+#Timers

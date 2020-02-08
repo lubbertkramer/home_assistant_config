@@ -1,0 +1,183 @@
+#*****************************************************************
+#* AUTHOR  Lubbert Kramer terug
+#* Github  https://github.com/lubbertkramer/home_assistant_config
+#*****************************************************************
+
+###
+#Contact
+
+###
+#Motion
+
+###
+#Notify
+
+###
+#State
+
+###
+#Switch
+
+#
+# slpkdvdimmer01
+
+#
+# Button 1
+- alias: dimmer_slpkdv_on
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer01
+      event: 1002
+  action:
+    # service: light.turn_on
+    service: light.toggle
+    data:
+      rgb_color: [36, 91, 255]
+    entity_id: light.slpkdv
+
+#
+# Button 2
+- alias: dimmer_slpkdv_brightness_up
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer01
+      event: 2002
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.slpkdv
+      brightness: >
+        {% set brightness = (state_attr('light.slpkdv', 'brightness')) | int | round(0) %}
+        {% set new_brightness = brightness + 25 %}
+        {% if new_brightness < 225 %}
+          {{ new_brightness }}
+        {% else %}
+          255
+        {% endif %}
+
+#
+# Button 3
+- alias: dimmer_slpkdv_brightness_down
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer01
+      event: 3002
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.slpkdv
+      brightness: >
+        {% set brightness = (state_attr('light.slpkdv', 'brightness')) | int | round(0) %}
+        {% set new_brightness = brightness - 25 %}
+        {% if new_brightness > 30 %}
+          {{ new_brightness }}
+        {% else %}
+          10
+        {% endif %}
+
+#
+# Button 4
+- alias: dimmer_slpkdv_off
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer01
+      event: 4002
+  action:
+    # service: light.turn_on
+    service: light.toggle
+    data:
+      rgb_color: [36, 91, 255]
+    entity_id: light.slpkdv
+
+#
+# slpkdvdimmer02
+
+#
+# Button 1
+- alias: dimmer_slpkdv_on
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer02
+      event: 1002
+  action:
+    # service: light.turn_on
+    service: light.toggle
+    data:
+      rgb_color: [36, 91, 255]
+    entity_id: light.slpkdv
+
+#
+# Button 2
+- alias: dimmer_slpkdv_brightness_up
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer02
+      event: 2002
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.slpkdv
+      brightness: >
+        {% set brightness = (state_attr('light.slpkdv', 'brightness')) | int | round(0) %}
+        {% set new_brightness = brightness + 25 %}
+        {% if new_brightness < 225 %}
+          {{ new_brightness }}
+        {% else %}
+          255
+        {% endif %}
+
+#
+# Button 3
+- alias: dimmer_slpkdv_brightness_down
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer02
+      event: 3002
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: light.slpkdv
+      brightness: >
+        {% set brightness = (state_attr('light.slpkdv', 'brightness')) | int | round(0) %}
+        {% set new_brightness = brightness - 25 %}
+        {% if new_brightness > 30 %}
+          {{ new_brightness }}
+        {% else %}
+          10
+        {% endif %}
+
+#
+# Button 4
+- alias: dimmer_slpkdv_off
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: slpkdvdimmer02
+      event: 4002
+  action:
+    # service: light.turn_on
+    service: light.toggle
+    data:
+      rgb_color: [36, 91, 255]
+    entity_id: light.slpkdv
+
+###
+#Time
+
+###
+#Timers
